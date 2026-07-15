@@ -70,14 +70,14 @@ const therapistsData = [
         whatsapp: '01020496810'
     },
     {
-        name: 'د/ هاني ابو النصر ',
+        name: 'أ/ هاني ابو النصر ',
         image: 'https://i.postimg.cc/qR61vjKP/WA-1784152957962.jpg',
         whatsapp: '01023538283'
     },
     {
-        name: 'د. كريم حسن',
-        image: 'ضع_رابط_صورة_الدكتور_3.jpg',
-        whatsapp: '201234567892'
+        name: 'أ/ رانيا مسعد صديق ',
+        image: 'https://i.postimg.cc/x1k5R6xL/IMG-20260716-WA0006.jpg',
+        whatsapp: '01206197180'
     },
     {
         name: 'د. نورا إبراهيم',
