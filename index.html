@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الأكاديمية الدولية للتدريب والاستشارات العلمية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ========================================================= -->
+    <!-- شريط التنقل العلوي (ثابت) -->
+    <!-- ========================================================= -->
+    <nav class="navbar" id="navbar">
+        <div class="container-nav">
+            <a href="index.html" class="logo">
+                <!-- ====== رابط اللوجو: ضع رابط صورتك هنا ====== -->
+                <img src="https://i.postimg.cc/HkDbnFpd/WA-1784067108744.jpg" alt="شعار الأكاديمية" class="logo-img" />
+                <span>الأكاديمية <span>الدولية</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#programs">البرامج</a></li>
+                <li><a href="#lecturer">المحاضر</a></li>
+                <li><a href="therapists.html">جلستك النفسيه</a></li>
+                <li><a href="#branches">الفروع</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========================================================= -->
+    <!-- ====== البانر (Hero) مع صورة خلفية ====== -->
+    <!-- ========================================================= -->
+    <!-- ====== ضع رابط صورة البانر هنا ====== -->
+    <header class="hero" id="home" style="background-image: url('https://i.postimg.cc/zX1nX9z4/WA-1784067483213.jpg');">
+        <div class="hero-overlay">
+            <div class="container hero-info">
+                <h1 class="main-title">
+                    الأكاديمية الدولية
+                    <small>للتدريب والاستشارات العلمية</small>
+                </h1>
+                <div class="badge-gold">
+                    <i class="fas fa-star"></i> أول مؤسسة أكاديمية متخصصة في مجال التدريب
+                </div>
+                <p>
+                    وذلك ضمن بروتوكولات الشراكة مع جمعية شباب مصر الخير لتنمية المجتمع،
+                    
+   </p><p>                    
+                    وجامعة شرق بورسعيد التكنولوجية،
+                    
+                    </p>
+                    <p>
+                     والمعهد العالي للخدمة الاجتماعية ببورسعيد،
+                    والعديد من الجهات والهيئات الحكومية.
+</p>             
+                <div class="hero-tags">
+                    <span class="tag"><i class="fas fa-certificate"></i> برامج معتمدة</span>
+                    <span class="tag"><i class="fas fa-users"></i> نخبة من المدربين</span>
+                    <span class="tag"><i class="fas fa-globe"></i> فروع في 4 محافظات</span>
+                </div>
+                <!-- ====== قسم البحث عن الشهادة ====== -->
+                <div class="search-area">
+                    <input type="text" id="certSearchInput" placeholder="أدخل كود الشهادة" />
+                    <button onclick="searchCertificate()"><i class="fas fa-search"></i> بحث</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- ====== المحتوى الرئيسي ====== -->
+    <!-- ========================================================= -->
+    <div class="container">
+
+        <!-- ====== 1. البرامج التدريبية ====== -->
+        <section id="programs">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> البرامج التدريبية المنفذة</h2>
+            <div class="programs-grid" id="programsGrid">
+                <!-- سيتم إنشاؤها بواسطة JavaScript -->
+            </div>
+        </section>
+
+        <!-- ====== 2. الدكتور محمد قطب ====== -->
+        <section id="lecturer">
+            <h2 class="section-title"><i class="fas fa-user-tie"></i> المحاضر الرئيسي</h2>
+            <div class="lecturer-card">
+                <div class="lecturer-avatar">
+                    <!-- ====== ضع رابط صورة الدكتور هنا ====== -->
+                    <img src="https://i.postimg.cc/J7jkgP3C/FB-IMG-1783377158550.jpg" alt="د. محمد قطب" />
+                </div>
+                <div class="lecturer-info">
+                    <h3>د. محمد قطب</h3>
+                    <p>خبير التدريب والاستشارات العلمية</p>
+                    <a href="https://d-mohamed-qotp.vercel.app/" target="_blank" class="btn-cv">
+                        <i class="fas fa-user-graduate"></i> السيرة الذاتية
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+<!-- ====== زر الانتقال إلى صفحة الأطباء ====== -->
+<div style="text-align: center; margin: 40px 0 20px;">
+    <a href="therapists.html" 
+       style="
+           display: inline-block;
+           background: rgba(212, 175, 55, 0.12);
+           border: 2px solid var(--accent-gold);
+           color: var(--accent-gold);
+           padding: 16px 40px;
+           border-radius: 50px;
+           font-weight: 800;
+           font-size: 1.2rem;
+           text-decoration: none;
+           transition: all 0.3s ease;
+           box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+           backdrop-filter: blur(4px);
+       "
+       onmouseover="this.style.background='var(--accent-gold)'; this.style.color='#07070d'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 32px rgba(212, 175, 55, 0.3)';"
+       onmouseout="this.style.background='rgba(212, 175, 55, 0.12)'; this.style.color='var(--accent-gold)'; this.style.transform='scale(1)'; this.style.boxShadow='0 4px 20px rgba(212, 175, 55, 0.15)';">
+        <i class="fas fa-heartbeat" style="margin-left: 10px;"></i>
+        اكتشف أطباء جلستك النفسيه
+    </a>
+</div>
+
+
+        <!-- ====== 3. الفروع (المحافظات) ====== -->
+        <section id="branches">
+            <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> فروع الأكاديمية</h2>
+            <div class="branches-grid" id="branchesGrid">
+                <!-- سيتم إنشاؤها بواسطة JavaScript -->
+            </div>
+        </section>
+
+        <!-- ====== 4. التواصل والعنوان ====== -->
+        <section id="contact">
+            <h2 class="section-title"><i class="fas fa-address-card"></i> تواصل معنا</h2>
+            <div class="contact-card">
+                <div class="contact-info">
+                    <!-- ====== ضع تفاصيل العنوان هنا ====== -->
+                  
+                    <p><i class="fas fa-phone"></i> هاتف: 01116677208</p>
+                  
+                </div>
+                <div class="contact-social">
+                    <a href="https://wa.me/201208727737" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/1DWTH53miL/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- نهاية container -->
+
+    <!-- ========================================================= -->
+    <!-- ====== تذييل الصفحة ====== -->
+    <!-- ========================================================= -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 جميع الحقوق محفوظة - <strong>الأكاديمية الدولية للتدريب والاستشارات العلمية</strong></p>
+        </div>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- ====== الأزرار العائمة ====== -->
+    <!-- ========================================================= -->
+    <div class="float-social">
+        <a href="https://wa.me/201208727737" target="_blank" class="whatsapp" data-label="واتساب">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+201116677208" class="phone" data-label="اتصال">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1DWTH53miL/" target="_blank" class="facebook" data-label="فيسبوك">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- ====== النوافذ المنبثقة (مودالات) ====== -->
+    <!-- ========================================================= -->
+
+    <!-- مودال الشهادة -->
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('certModal')">&times;</span>
+            <div id="certResult"></div>
+        </div>
+    </div>
+
+    <!-- مودال الحجز -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bookingModal')">&times;</span>
+            <h2 style="color: #07070d;">حجز البرنامج</h2>
+            <form onsubmit="bookProgram(event)">
+                <input type="text" id="studentName" placeholder="الاسم الكامل" required />
+                <input type="text" id="studentPhone" placeholder="رقم الهاتف" required />
+                <button type="submit">تأكيد الحجز</button>
+            </form>
+            <div id="bookingMessage"></div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- ====== ملف JavaScript ====== -->
+    <!-- ========================================================= -->
+    <script src="script.js"></script>
+
+</body>
+</html>
