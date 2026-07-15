@@ -80,6 +80,11 @@ const therapistsData = [
         whatsapp: '01206197180'
     },
     {
+        name: 'أ/ دنيا ابو النور',
+        image: 'https://i.postimg.cc/Hntm6Q2P/WA-1784159322482.jpg',
+        whatsapp: '01282081856'
+    },
+    {
         name: 'د. نورا إبراهيم',
         image: 'ضع_رابط_صورة_الدكتور_4.jpg',
         whatsapp: '201234567893'
