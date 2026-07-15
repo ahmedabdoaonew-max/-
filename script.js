@@ -18,7 +18,7 @@ const programsData = [
         desc: 'برنامج متخصص في الصحة النفسية وتعديل السلوك.',
         img1: 'https://i.postimg.cc/90sgr1fK/IMG-20260714-WA0099.jpg.jpg',
         img2: 'https://i.postimg.cc/SssgdHY0/IMG-20260714-WA0106.jpg',
-        video: 'https://www.image2url.com/r2/default/videos/1784073451623-92b20533-c847-49bc-847a-f213e1171a7a.mp4'
+        video: 'https://videotourl.com/videos/1784082422334-ae817570-5f5b-4547-aedf-ec9f8235571d.mp4'
     },
     {
         id: 3,
@@ -50,7 +50,7 @@ const programsData = [
         desc: 'برنامج لتأهيل الاخصائيين في مجال التربية الخاصة.',
         img1: 'https://i.postimg.cc/8zfJR4zH/IMG-20260714-WA0095.jpg',
         img2: 'https://i.postimg.cc/d16LsS57/IMG-20260714-WA0067.jpg',
-        video: 'https://videotourl.com/videos/1784082422334-ae817570-5f5b-4547-aedf-ec9f8235571d.mp4'
+        video: 'https://www.image2url.com/r2/default/videos/1784073451623-92b20533-c847-49bc-847a-f213e1171a7a.mp4'
     }
 ];
 
@@ -65,9 +65,9 @@ const branchesData = [
 // ---------- أطباء "جلستك النفسيه" ----------
 const therapistsData = [
     {
-        name: 'د. أحمد ياسر',
-        image: 'ضع_رابط_صورة_الدكتور_1.jpg',
-        whatsapp: '201234567890'
+        name: 'د/ رامي علاء الدين',
+        image: 'https://i.postimg.cc/JhnS16K8/WA-1784114163484.jpg',
+        whatsapp: '+20 10 20496810'
     },
     {
         name: 'د. سارة محمود',
