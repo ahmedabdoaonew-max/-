@@ -70,9 +70,9 @@ const therapistsData = [
         whatsapp: '01020496810'
     },
     {
-        name: 'د. سارة محمود',
-        image: 'ضع_رابط_صورة_الدكتور_2.jpg',
-        whatsapp: '201234567891'
+        name: 'د/ هاني ابو النصر ',
+        image: 'https://i.postimg.cc/qR61vjKP/WA-1784152957962.jpg',
+        whatsapp: '01023538283'
     },
     {
         name: 'د. كريم حسن',
