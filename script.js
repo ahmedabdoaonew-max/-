@@ -67,7 +67,7 @@ const therapistsData = [
     {
         name: 'د/ رامي علاء الدين',
         image: 'https://i.postimg.cc/JhnS16K8/WA-1784114163484.jpg',
-        whatsapp: '201020496810'
+        whatsapp: '01020496810'
     },
     {
         name: 'د. سارة محمود',
