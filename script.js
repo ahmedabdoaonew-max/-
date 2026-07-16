@@ -88,11 +88,6 @@ const therapistsData = [
         name: 'أ/ دعاء حسن',
         image: 'https://i.postimg.cc/4xsPCp1Q/IMG-20260716-WA0020.jpg',
         whatsapp: '01096721636'
-    },
-    {
-        name: 'د.  ',
-        image: 'ضع_رابط_صورة_الدكتور_4.jpg',
-        whatsapp: '201234567893'
     }
 ];
 
