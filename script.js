@@ -88,6 +88,11 @@ const therapistsData = [
         name: 'أ/ دعاء حسن',
         image: 'https://i.postimg.cc/4xsPCp1Q/IMG-20260716-WA0020.jpg',
         whatsapp: '01096721636'
+    },
+    {
+        name: 'د/ نرمين فاروق عواد',
+        image: 'https://i.postimg.cc/Qt975nSY/WA-1784318029372.jpg',
+        whatsapp: '01275733821'
     }
 ];
 
