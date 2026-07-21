@@ -64,6 +64,11 @@ const branchesData = [
 
 // ---------- أطباء "جلستك النفسيه" ----------
 const therapistsData = [
+{
+        name: 'د/ امنيه محمود',
+        image: 'https://i.postimg.cc/W1Lxy0m1/FB-IMG-1784665019037.jpg',
+        whatsapp: '01010968190'
+    },
     {
         name: 'د/ رامي علاء الدين',
         image: 'https://i.postimg.cc/JhnS16K8/WA-1784114163484.jpg',
