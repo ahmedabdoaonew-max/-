@@ -70,11 +70,6 @@ const therapistsData = [
         whatsapp: '01010968190'
     },
     {
-        name: 'د/ رامي علاء الدين',
-        image: 'https://i.postimg.cc/JhnS16K8/WA-1784114163484.jpg',
-        whatsapp: '01020496810'
-    },
-    {
         name: 'أ/ هاني ابو النصر ',
         image: 'https://i.postimg.cc/qR61vjKP/WA-1784152957962.jpg',
         whatsapp: '01023538283'
