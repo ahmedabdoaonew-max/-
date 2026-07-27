@@ -100,12 +100,11 @@ const therapistsData = [
 const studentsData = [
     { 
         code: '20261', 
-        studentName: 'إيمان عبد المنعم محمد السحراوي', 
+        studentName: 'هبة الله السيد كامل', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'التخاطب وعيوب الكلام', 
+        courseName: ' أخصائي صحة نفسية', 
         lecturerImage: 'https://i.postimg.cc/rmH0t4S0/IMG-20260727-WA0037.jpg', 
-        certificateImage: 'https://i.postimg.cc/BnhKGRX5/IMG-20260727-192155.png' , certificateImage:
-'https://i.postimg.cc/tRVwnjjv/IMG-20260727-194410.png' },
+        certificateImage: 'https://i.postimg.cc/tRVwnjjv/IMG-20260727-194410.png'},
     { 
         code: 'SH-2025-002', 
         studentName: 'سارة خالد عبدالله', 
