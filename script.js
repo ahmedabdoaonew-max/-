@@ -99,12 +99,12 @@ const therapistsData = [
 // ---------- بيانات الطلاب (20 طالب وهمي) ----------
 const studentsData = [
     { 
-        code: 'SH-2025-001', 
-        studentName: 'أحمد محمد علي', 
+        code: '20261', 
+        studentName: 'إيمان عبد المنعم محمد السحراوي', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل اخصائي اكلينكي', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_1.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_1.jpg' 
+        courseName: 'التخاطب وعيوب الكلام', 
+        lecturerImage: 'https://i.postimg.cc/rmH0t4S0/IMG-20260727-WA0037.jpg', 
+        certificateImage: 'https://i.postimg.cc/BnhKGRX5/IMG-20260727-192155.png' 
     },
     { 
         code: 'SH-2025-002', 
