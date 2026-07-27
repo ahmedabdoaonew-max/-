@@ -99,14 +99,14 @@ const therapistsData = [
 // ---------- بيانات الطلاب (20 طالب وهمي) ----------
 const studentsData = [
     { 
-        code: '20261', 
+        code: '2026001', 
         studentName: 'هبة الله السيد كامل', 
         lecturerName: 'د. محمد قطب', 
         courseName: ' أخصائي صحة نفسية', 
         lecturerImage: 'https://i.postimg.cc/rmH0t4S0/IMG-20260727-WA0037.jpg', 
         certificateImage: 'https://i.postimg.cc/tRVwnjjv/IMG-20260727-194410.png'},
     { 
-        code: '20262', 
+        code: '2026002', 
         studentName: 'إيمان عبد المنعم محمد الصحراوي', 
         lecturerName: 'د. محمد قطب', 
         courseName: 'التخاطب وعيوب الكلام', 
@@ -114,60 +114,61 @@ const studentsData = [
         certificateImage: 'https://i.postimg.cc/BnhKGRX5/IMG-20260727-192155.png' 
     },
     { 
-        code: 'SH-2025-003', 
-        studentName: 'يوسف طارق إبراهيم', 
+        code: '2026003', 
+        studentName: 'نرمين فاروق عواد ابراهيم', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل مرشد أسري', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_3.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_3.jpg' 
+        courseName: 'أخصائي صحة نفسية', 
+        lecturerImage: 'https://i.postimg.cc/3R0CCxVJ/IMG-20260728-WA0005.jpg', 
+        certificateImage: 'https://i.postimg.cc/7hT77t5p/IMG-20260728-011918.png' 
     },
     { 
-        code: 'SH-2025-004', 
-        studentName: 'ليلى عماد الدين', 
+        code: '2026004', 
+        studentName: 'السيدة عبد المجيد عبد المطلب', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تدريب المدربين TOT', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_4.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_4.jpg' 
+        courseName: 'أخصائي صحة نفسية', 
+        lecturerImage: 'https://i.postimg.cc/MGWFDVbg/WA-1785192060158.jpg', 
+        certificateImage: 'https://i.postimg.cc/509W6DRC/IMG-20260728-013435.png' 
     },
     { 
-        code: 'SH-2025-005', 
-        studentName: 'عمر سامي عبدالرحمن', 
+        code: '2026005', 
+        studentName:
+            'فاطمة صديق عبد الغفار ادريس', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل اخصائي دعم نفسي', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_5.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_5.jpg' 
+        courseName: 'أخصائي صحة نفسية', 
+        lecturerImage: 'https://i.postimg.cc/3rgfPtfr/IMG-20260728-WA0002.jpg', 
+        certificateImage: 'https://i.postimg.cc/MGNr8NJC/IMG-20260728-013626.png' 
     },
     { 
-        code: 'SH-2025-006', 
-        studentName: 'نورا سعيد أحمد', 
+        code: '2026006', 
+        studentName: 'إسراء صبري تاج السر', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل اخصائي تربية خاصة', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_6.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_6.jpg' 
+        courseName: 'أخصائي صحة نفسية', 
+        lecturerImage: 'https://i.postimg.cc/MK374RwZ/IMG-20260728-WA0001.jpg', 
+        certificateImage: 'https://i.postimg.cc/VLvMj6ty/IMG-20260728-013546.png' 
     },
     { 
-        code: 'SH-2025-007', 
-        studentName: 'محمد جمال الدين', 
+        code: '2026007', 
+        studentName: '', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل اخصائي اكلينكي', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_7.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_7.jpg' 
+        courseName: '', 
+        lecturerImage: '', 
+        certificateImage: '' 
     },
     { 
-        code: 'SH-2025-008', 
-        studentName: 'فاطمة حسن علي', 
+        code: '2026008', 
+        studentName: '', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل اخصائي صحة نفسية', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_8.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_8.jpg' 
+        courseName: '', 
+        lecturerImage: '', 
+        certificateImage: '' 
     },
     { 
-        code: 'SH-2025-009', 
-        studentName: 'كريم مصطفى ناجي', 
+        code: '2026009', 
+        studentName: '', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل مرشد أسري', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_9.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_9.jpg' 
+        courseName: '', 
+        lecturerImage: '', 
+        certificateImage: '' 
     },
     { 
         code: 'SH-2025-010', 
