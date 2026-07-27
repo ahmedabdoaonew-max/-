@@ -106,12 +106,12 @@ const studentsData = [
         lecturerImage: 'https://i.postimg.cc/rmH0t4S0/IMG-20260727-WA0037.jpg', 
         certificateImage: 'https://i.postimg.cc/tRVwnjjv/IMG-20260727-194410.png'},
     { 
-        code: 'SH-2025-002', 
-        studentName: 'سارة خالد عبدالله', 
+        code: '20262', 
+        studentName: 'إيمان عبد المنعم محمد الصحراوي', 
         lecturerName: 'د. محمد قطب', 
-        courseName: 'تأهيل اخصائي صحة نفسية', 
-        lecturerImage: 'ضع_رابط_صورة_المحاضر_2.jpg', 
-        certificateImage: 'ضع_رابط_صورة_الشهادة_2.jpg' 
+        courseName: 'التخاطب وعيوب الكلام', 
+        lecturerImage: '', 
+        certificateImage: 'https://i.postimg.cc/BnhKGRX5/IMG-20260727-192155.png' 
     },
     { 
         code: 'SH-2025-003', 
