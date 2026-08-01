@@ -4,8 +4,19 @@
 
 // ---------- البرامج التدريبية (6 برامج) ----------
 const programsData = [
-    {
+
+ {
         id: 1,
+        title: '(المنح المجانيه)',
+        desc: 
+' التابعه لوزارة الشباب والرياضه و رئاسة الجمهورية',
+        img1: '',
+        img2: ''
+        
+    },
+   
+    {
+        id: 2,
         title: 'تأهيل اخصائي اكلينكي',
         desc: 'برنامج متكامل لتأهيل الاخصائيين الاكلينيكيين.',
         img1: 'https://i.postimg.cc/g0P9McmM/IMG-20260714-WA0081.jpg.jpg',
@@ -13,7 +24,7 @@ const programsData = [
         video: 'https://videotourl.com/videos/1784071587748-bbeb28f8-4aa5-4b6a-a0c1-1e2c090c2a4b.mp4'
     },
     {
-        id: 2,
+        id: 3,
         title: 'تأهيل اخصائي صحة نفسية وتعديل السلوك',
         desc: 'برنامج متخصص في الصحة النفسية وتعديل السلوك.',
         img1: 'https://i.postimg.cc/90sgr1fK/IMG-20260714-WA0099.jpg.jpg',
@@ -21,7 +32,7 @@ const programsData = [
         video: 'https://videotourl.com/videos/1784082422334-ae817570-5f5b-4547-aedf-ec9f8235571d.mp4'
     },
     {
-        id: 3,
+        id: 4,
         title: 'تأهيل مرشد أسري وتربوي',
         desc: 'برنامج إعداد مرشدين أسريين وتربويين محترفين.',
         img1: 'https://i.postimg.cc/T3t7bRhY/IMG-20260714-WA0098.jpg',
@@ -29,7 +40,7 @@ const programsData = [
         video: 'https://videotourl.com/videos/1784079076779-9980f13e-7cb9-416e-ba2e-9ed8ab92ab9e.mp4'
     },
     {
-        id: 4,
+        id: 5,
         title: 'تدريب المدربين TOT',
         desc: 'برنامج تدريب المدربين (TOT) لإعداد قادة التدريب.',
         img1: 'https://i.postimg.cc/RFKLg9Cc/IMG-20260714-WA0084.jpg',
@@ -37,7 +48,7 @@ const programsData = [
         video: 'https://videotourl.com/videos/1784081986745-5f1eea13-21d3-4218-8e7a-3eb8f74615f8.mp4'
     },
     {
-        id: 5,
+        id: 6,
         title: 'تأهيل اخصائي دعم نفسي وإدمان',
         desc: 'برنامج لتأهيل الاخصائيين في مجال الدعم النفسي والإدمان.',
         img1: 'https://i.postimg.cc/nzGQsLcR/IMG-20260714-WA0083.jpg',
@@ -45,7 +56,7 @@ const programsData = [
         video: 'https://videotourl.com/videos/1784081882304-39e49100-4dbd-4bf5-be4b-a50b98b778ac.mp4'
     },
     {
-        id: 6,
+        id: 7,
         title: 'تأهيل اخصائي تربية خاصة',
         desc: 'برنامج لتأهيل الاخصائيين في مجال التربية الخاصة.',
         img1: 'https://i.postimg.cc/8zfJR4zH/IMG-20260714-WA0095.jpg',
