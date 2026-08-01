@@ -10,9 +10,9 @@ const programsData = [
         title: '(المنح المجانيه)',
         desc: 
 ' التابعه لوزارة الشباب والرياضه و رئاسة الجمهورية',
-        img1: '',
-        img2: ''
-        
+        img1: 'https://i.postimg.cc/J7jkgP3C/FB-IMG-1783377158550.jpg',
+        img2: '',
+        video: ''
     },
    
     {
