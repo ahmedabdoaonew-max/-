@@ -118,7 +118,8 @@ const studentsData = [
         certificateImage: 'https://i.postimg.cc/tRVwnjjv/IMG-20260727-194410.png'},
     { 
         code: '2026002', 
-        studentName: 'إيمان عبد المنعم محمد الصحراوي', 
+        studentName: 
+         'إيمان عبد المنعم محمد', 
         lecturerName: 'د. محمد قطب', 
         courseName: 'التخاطب وعيوب الكلام', 
         lecturerImage: '', 
