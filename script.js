@@ -12,7 +12,7 @@ const programsData = [
 ' التابعه لوزارة الشباب والرياضه و رئاسة الجمهورية',
         img1: 'https://i.postimg.cc/fRRkNG92/IMG-20260801-135203.png',
         img2: 'https://i.postimg.cc/RF6Hzj2k/IMG-20260715-WA0005.jpg',
-        video: ''
+        video: 'https://www.image2url.com/r2/default/videos/1786295358259-701e607d-d4ab-4a58-afe5-1cf48a231a99.mp4'
     },
    
     {
