@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>الصحة النفسية والروحية - الأكاديمية الدولية</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    font-family: 'Cairo',
+                 Tahoma,
+                 Arial,
+                 sans-serif;
+
+    direction: rtl;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #121a35 0%,
+            #1b2350 35%,
+            #33295e 70%,
+            #402f5e 100%
+        );
+
+    color: #eee6d8;
+
+    position: relative;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   النجوم
+========================================================= */
+
+.stars {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background-image:
+
+        radial-gradient(
+            1.5px 1.5px at 20px 30px,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1.5px 1.5px at 120px 80px,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 200px 150px,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1.5px 1.5px at 300px 60px,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 400px 200px,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1.5px 1.5px at 500px 100px,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 60px 220px,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1.5px 1.5px at 350px 260px,
+            #fff,
+            transparent
+        );
+
+    background-repeat: repeat;
+
+    background-size: 550px 300px;
+
+    opacity: .55;
+
+    animation:
+        twinkle
+        6s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+@keyframes twinkle {
+
+    from {
+        opacity: .3;
+    }
+
+    to {
+        opacity: .65;
+    }
+
+}
+
+
+/* =========================================================
+   القمر
+========================================================= */
+
+.moon {
+
+    position: fixed;
+
+    top: 26px;
+
+    left: 26px;
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 50%;
+
+    background: #f3e6b8;
+
+    box-shadow:
+        -14px 0 0 0 #1b2350 inset,
+        0 0 25px rgba(243,230,184,.5);
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   شريط الصفحة
+========================================================= */
+
+.simple-nav {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 20px 16px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.back-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #eee6d8;
+
+    text-decoration: none;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    transition: .25s ease;
+}
+
+
+.back-btn:hover {
+
+    background:
+        rgba(255,255,255,.16);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.nav-title {
+
+    color: #c9b48a;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   الحاوية
+========================================================= */
+
+.container {
+
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding:
+        20px 16px 60px;
+}
+
+
+/* =========================================================
+   العنوان
+========================================================= */
+
+.hero {
+
+    text-align: center;
+
+    margin-bottom: 34px;
+}
+
+
+.hero .eyebrow {
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
+
+    color: #c9b48a;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+
+.hero h1 {
+
+    font-family: 'Amiri',
+                 serif;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    color: #f3e6b8;
+
+    margin-bottom: 8px;
+}
+
+
+.hero p {
+
+    color: #b9b3d6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   الآية
+========================================================= */
+
+.ayah-card {
+
+    background:
+        linear-gradient(
+            160deg,
+            rgba(243,230,184,.08),
+            rgba(243,230,184,.02)
+        );
+
+    border:
+        1px solid
+        rgba(243,230,184,.28);
+
+    border-radius: 18px;
+
+    padding: 34px 28px;
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+    position: relative;
+}
+
+
+.ayah-card::before,
+.ayah-card::after {
+
+    content: "﴿";
+
+    font-family: 'Amiri',
+                 serif;
+
+    font-size: 34px;
+
+    color: #c9b48a;
+
+    position: absolute;
+
+    top: 14px;
+
+    opacity: .6;
+}
+
+
+.ayah-card::before {
+    right: 18px;
+}
+
+
+.ayah-card::after {
+
+    content: "﴾";
+
+    left: 18px;
+}
+
+
+.ayah-text {
+
+    font-family: 'Amiri',
+                 serif;
+
+    font-size: 26px;
+
+    line-height: 2.1;
+
+    color: #f3e6b8;
+
+    margin-bottom: 16px;
+}
+
+
+.ayah-ref {
+
+    font-size: 13px;
+
+    color: #b9b3d6;
+}
+
+
+.ayah-nav {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+.ayah-nav button {
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color: #eee6d8;
+
+    padding: 7px 16px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+.ayah-nav button:hover {
+
+    background:
+        rgba(255,255,255,.16);
+}
+
+
+/* =========================================================
+   عناوين الأقسام
+========================================================= */
+
+.section-title {
+
+    font-size: 15px;
+
+    color: #c9b48a;
+
+    margin: 30px 0 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.section-title::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,.15);
+}
+
+
+/* =========================================================
+   التنفس
+========================================================= */
+
+.breath-card {
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 16px;
+
+    padding: 26px;
+
+    text-align: center;
+
+    margin-top: 10px;
+}
+
+
+.breath-circle {
+
+    width: 90px;
+
+    height: 90px;
+
+    margin: 10px auto 16px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201,180,138,.45),
+            rgba(201,180,138,.05)
+        );
+
+    border:
+        1px solid
+        rgba(201,180,138,.5);
+
+    animation:
+        breathe
+        8s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+}
+
+
+.breath-label {
+
+    font-size: 13px;
+
+    color: #b9b3d6;
+}
+
+
+/* =========================================================
+   الصلاة
+========================================================= */
+
+.prayer-card {
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 16px;
+
+    padding: 20px;
+}
+
+
+.prayer-city-row {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 16px;
+}
+
+
+.prayer-city-row input {
+
+    flex: 1;
+
+    min-width: 130px;
+
+    padding: 9px 12px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: #eee6d8;
+
+    font-size: 13px;
+}
+
+
+.prayer-city-row input::placeholder {
+
+    color: #8a84ad;
+}
+
+
+.prayer-city-row button {
+
+    background: #c9b48a;
+
+    color: #1b2350;
+
+    border: none;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+.prayer-city-row button:hover {
+
+    opacity: .9;
+}
+
+
+.prayer-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(90px, 1fr)
+        );
+
+    gap: 10px;
+}
+
+
+.prayer-item {
+
+    background:
+        rgba(255,255,255,.05);
+
+    border-radius: 12px;
+
+    padding: 12px 8px;
+
+    text-align: center;
+}
+
+
+.prayer-name {
+
+    display: block;
+
+    font-size: 12px;
+
+    color: #c9b48a;
+
+    margin-bottom: 6px;
+}
+
+
+.prayer-time {
+
+    display: block;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: #f3e6b8;
+}
+
+
+.prayer-hint {
+
+    font-size: 12px;
+
+    color: #8a84ad;
+
+    margin-top: 12px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   جدول المواعيد
+========================================================= */
+
+.schedule-card {
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 16px;
+
+    padding: 20px;
+}
+
+
+.schedule-add-row {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 16px;
+}
+
+
+.schedule-add-row input,
+.schedule-add-row select {
+
+    padding: 9px 10px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: #eee6d8;
+
+    font-size: 13px;
+}
+
+
+.schedule-add-row input[type=text] {
+
+    flex: 2;
+
+    min-width: 140px;
+}
+
+
+.schedule-add-row input[type=time] {
+
+    flex: 1;
+
+    min-width: 100px;
+}
+
+
+.schedule-add-row select {
+
+    flex: 1;
+
+    min-width: 110px;
+}
+
+
+.schedule-add-row button {
+
+    background: #c9b48a;
+
+    color: #1b2350;
+
+    border: none;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+.schedule-card table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+
+.schedule-card th,
+.schedule-card td {
+
+    padding: 10px 6px;
+
+    text-align: right;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color: #eee6d8;
+}
+
+
+.schedule-card th {
+
+    color: #c9b48a;
+
+    font-weight: normal;
+
+    font-size: 12px;
+}
+
+
+.schedule-empty {
+
+    text-align: center;
+
+    color: #8a84ad;
+
+    padding: 16px;
+}
+
+
+.schedule-del {
+
+    background: none;
+
+    border: none;
+
+    color: #e08080;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   النصائح
+========================================================= */
+
+.tip-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(210px, 1fr)
+        );
+
+    gap: 12px;
+}
+
+
+.tip-card {
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 14px;
+
+    padding: 18px;
+}
+
+
+.tip-card .tip-icon {
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+
+    display: block;
+}
+
+
+.tip-card h3 {
+
+    font-size: 14px;
+
+    color: #f3e6b8;
+
+    margin-bottom: 6px;
+}
+
+
+.tip-card p {
+
+    font-size: 13px;
+
+    color: #c8c2e6;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   الملاحظة
+========================================================= */
+
+.gallery-note {
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px dashed
+        rgba(255,255,255,.2);
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    font-size: 13px;
+
+    color: #b9b3d6;
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    line-height: 1.8;
+}
+
+
+footer.note {
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #8a84ad;
+
+    margin-top: 40px;
+}
+
+
+/* =========================================================
+   الهاتف
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .ayah-text {
+        font-size: 22px;
+    }
+
+    .ayah-card {
+        padding: 30px 18px;
+    }
+
+    .simple-nav {
+        padding-top: 14px;
+    }
+
+    .nav-title {
+        font-size: 11px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="moon"></div>
+
+
+<!-- =========================================================
+     شريط الصفحة
+========================================================= -->
+
+<div class="simple-nav">
+
+    <a href="index.html"
+       class="back-btn">
+
+        🏠 العودة إلى الأكاديمية
+
+    </a>
+
+    <div class="nav-title">
+        مساحة سكينة وراحة
+    </div>
+
+</div>
+
+
+<div class="container">
+
+
+    <!-- =====================================================
+         العنوان
+    ====================================================== -->
+
+    <div class="hero">
+
+        <div class="eyebrow">
+            لحظة سكينة
+        </div>
+
+        <h1>
+            الصحة النفسية والروحية
+        </h1>
+
+        <p>
+            مساحتك الهادئة وسط يومك
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         الآيات
+    ====================================================== -->
+
+    <div class="ayah-card">
+
+        <div class="ayah-text"
+             id="ayahText">
+
+            جاري التحميل...
+
+        </div>
+
+        <div class="ayah-ref"
+             id="ayahRef">
+        </div>
+
+        <div class="ayah-nav">
+
+            <button onclick="showAyah(-1)">
+                ◀ السابقة
+            </button>
+
+            <button onclick="showAyah(1)">
+                التالية ▶
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         التنفس
+    ====================================================== -->
+
+    <div class="section-title">
+
+        🌬️ لحظة تنفّس
+
+    </div>
+
+
+    <div class="breath-card">
+
+        <div class="breath-circle"></div>
+
+        <div class="breath-label">
+
+            تنفّس مع اتساع الدائرة...
+            واحبس مع ثباتها...
+            وازفر مع انكماشها
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         الصلاة
+    ====================================================== -->
+
+    <div class="section-title">
+
+        🕌 مواعيد الصلاة
+
+    </div>
+
+
+    <div class="prayer-card">
+
+        <div class="prayer-city-row">
+
+            <input
+                type="text"
+                id="prayerCity"
+                placeholder="اسم المدينة (مثال: القاهرة)"
+            >
+
+            <input
+                type="text"
+                id="prayerCountry"
+                placeholder="الدولة (مثال: مصر)"
+            >
+
+            <button onclick="fetchPrayerTimes()">
+
+                🔄 تحديث المواعيد
+
+            </button>
+
+        </div>
+
+
+        <div class="prayer-grid"
+             id="prayerGrid">
+
+            <div class="prayer-item">
+
+                <span class="prayer-name">
+                    الفجر
+                </span>
+
+                <span class="prayer-time"
+                      id="prayerFajr">
+                    --:--
+                </span>
+
+            </div>
+
+
+            <div class="prayer-item">
+
+                <span class="prayer-name">
+                    الظهر
+                </span>
+
+                <span class="prayer-time"
+                      id="prayerDhuhr">
+                    --:--
+                </span>
+
+            </div>
+
+
+            <div class="prayer-item">
+
+                <span class="prayer-name">
+                    العصر
+                </span>
+
+                <span class="prayer-time"
+                      id="prayerAsr">
+                    --:--
+                </span>
+
+            </div>
+
+
+            <div class="prayer-item">
+
+                <span class="prayer-name">
+                    المغرب
+                </span>
+
+                <span class="prayer-time"
+                      id="prayerMaghrib">
+                    --:--
+                </span>
+
+            </div>
+
+
+            <div class="prayer-item">
+
+                <span class="prayer-name">
+                    العشاء
+                </span>
+
+                <span class="prayer-time"
+                      id="prayerIsha">
+                    --:--
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <p class="prayer-hint"
+           id="prayerHint">
+
+            اكتب اسم مدينتك واضغط
+            "تحديث المواعيد"
+            لعرض مواعيد الصلاة الخاصة بيها.
+
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         جدول المواعيد
+    ====================================================== -->
+
+    <div class="section-title">
+
+        🗓️ جدول مواعيدك اليومية
+        (صلاة، تمارين، تأمل...)
+
+    </div>
+
+
+    <div class="schedule-card">
+
+        <div class="schedule-add-row">
+
+            <input
+                type="text"
+                id="scheduleTitle"
+                placeholder="اسم الموعد (مثال: تمارين إطالة)"
+            >
+
+            <input
+                type="time"
+                id="scheduleTime"
+            >
+
+            <select id="scheduleType">
+
+                <option value="prayer">
+                    🕌 صلاة
+                </option>
+
+                <option value="exercise">
+                    🏃 تمارين
+                </option>
+
+                <option value="meditation">
+                    🧘 تأمل
+                </option>
+
+                <option value="other">
+                    📌 أخرى
+                </option>
+
+            </select>
+
+            <button onclick="addScheduleItem()">
+
+                ➕ إضافة للجدول
+
+            </button>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            الوقت
+                        </th>
+
+                        <th>
+                            النوع
+                        </th>
+
+                        <th>
+                            الموعد
+                        </th>
+
+                        <th>
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="scheduleTableBody">
+
+                    <tr>
+
+                        <td colspan="4"
+                            class="schedule-empty">
+
+                            لا توجد مواعيد مضافة بعد
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         النصائح
+    ====================================================== -->
+
+    <div class="section-title">
+
+        💛 نصائح لراحة البال أثناء يوم العمل
+
+    </div>
+
+
+    <div class="tip-grid"
+         id="tipsGrid">
+    </div>
+
+
+    <!-- =====================================================
+         الملاحظة
+    ====================================================== -->
+
+    <div class="gallery-note">
+
+        🖼️ هذا القسم جاهز من الناحية البرمجية والمحتوى —
+        اترك مساحة التصميم والصور دي لإضافتك الشخصية لاحقاً براحتك،
+        الأيقونات والألوان دلوقتي مؤقتة بس عشان الصفحة تشتغل
+        وتبان مرتبة من الآن.
+
+    </div>
+
+
+    <footer class="note">
+
+        ﴿ وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ ﴾
+
+        — سورة الذاريات: 55
+
+    </footer>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   الآيات
+========================================================= */
+
+const ayat = [
+
+    {
+        text:
+        'الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ ۗ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ',
+
+        ref:
+        'سورة الرعد: 28'
+    },
+
+
+    {
+        text:
+        'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا (5) إِنَّ مَعَ الْعُسْرِ يُسْرًا',
+
+        ref:
+        'سورة الشرح: 5-6'
+    },
+
+
+    {
+        text:
+        'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا',
+
+        ref:
+        'سورة البقرة: 286'
+    },
+
+
+    {
+        text:
+        'يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً',
+
+        ref:
+        'سورة الفجر: 27-28'
+    },
+
+
+    {
+        text:
+        'قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا',
+
+        ref:
+        'سورة الزمر: 53'
+    },
+
+
+    {
+        text:
+        'وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ',
+
+        ref:
+        'سورة الطلاق: 2-3'
+    },
+
+
+    {
+        text:
+        'وَبَشِّرِ الصَّابِرِينَ',
+
+        ref:
+        'سورة البقرة: 155'
+    }
+
+];
+
+
+let ayahIndex =
+    new Date().getDate()
+    %
+    ayat.length;
+
+
+function renderAyah() {
+
+    document.getElementById('ayahText')
+        .textContent =
+        ayat[ayahIndex].text;
+
+
+    document.getElementById('ayahRef')
+        .textContent =
+        ayat[ayahIndex].ref;
+
+}
+
+
+function showAyah(direction) {
+
+    ayahIndex =
+        (
+            ayahIndex +
+            direction +
+            ayat.length
+        )
+        %
+        ayat.length;
+
+    renderAyah();
+
+}
+
+
+renderAyah();
+
+
+/* =========================================================
+   النصائح
+========================================================= */
+
+const tips = [
+
+    {
+        icon: '🕊️',
+
+        title: 'استراحة قصيرة',
+
+        body:
+        'خد 3 دقائق بعيد عن الشاشة كل ساعتين — قوم اتمشى أو اتنفس بعمق.'
+    },
+
+
+    {
+        icon: '🤲',
+
+        title: 'الذكر والدعاء',
+
+        body:
+        'لحظة ذكر بسيطة بين المهام بتفرق كتير في تهدئة البال.'
+    },
+
+
+    {
+        icon: '💧',
+
+        title: 'اشرب مياه',
+
+        body:
+        'العطش بيظهر أحياناً في صورة توتر أو تعب مش حقيقي.'
+    },
+
+
+    {
+        icon: '🙏',
+
+        title: 'امتنان',
+
+        body:
+        'اكتب 3 حاجات كويسة حصلت النهاردة، مهما كانت بسيطة.'
+    },
+
+
+    {
+        icon: '☀️',
+
+        title: 'ضوء طبيعي',
+
+        body:
+        'لو تقدر، خد دقايق في الشمس أو جنب شباك مفتوح.'
+    },
+
+
+    {
+        icon: '🧘',
+
+        title: 'استرخاء الكتفين',
+
+        body:
+        'راجع وضعية جلوسك وارخِ كتافك كل شوية وانت شغال.'
+    }
+
+];
+
+
+function renderTips() {
+
+    const grid =
+        document.getElementById('tipsGrid');
+
+
+    grid.innerHTML =
+        tips.map(function(t) {
+
+            return (
+
+                '<div class="tip-card">' +
+
+                '<span class="tip-icon">' +
+                t.icon +
+                '</span>' +
+
+                '<h3>' +
+                t.title +
+                '</h3>' +
+
+                '<p>' +
+                t.body +
+                '</p>' +
+
+                '</div>'
+
+            );
+
+        }).join('');
+
+}
+
+
+renderTips();
+
+
+/* =========================================================
+   مواعيد الصلاة
+========================================================= */
+
+function fetchPrayerTimes() {
+
+    const city =
+        document
+        .getElementById('prayerCity')
+        .value
+        .trim();
+
+
+    const country =
+        document
+        .getElementById('prayerCountry')
+        .value
+        .trim();
+
+
+    const hint =
+        document
+        .getElementById('prayerHint');
+
+
+    if (!city) {
+
+        hint.textContent =
+            '⚠️ اكتب اسم المدينة الأول.';
+
+        return;
+
+    }
+
+
+    hint.textContent =
+        'جاري التحميل...';
+
+
+    try {
+
+        localStorage.setItem(
+            'wellness_prayer_city',
+            city
+        );
+
+
+        localStorage.setItem(
+            'wellness_prayer_country',
+            country
+        );
+
+    }
+
+    catch (e) {}
+
+
+    const url =
+        'https://api.aladhan.com/v1/timingsByCity?city='
+        +
+        encodeURIComponent(city)
+        +
+        '&country='
+        +
+        encodeURIComponent(country || '')
+        +
+        '&method=5';
+
+
+    fetch(url)
+
+        .then(function(res) {
+
+            return res.json();
+
+        })
+
+        .then(function(data) {
+
+            if (
+                !data ||
+                data.code !== 200 ||
+                !data.data ||
+                !data.data.timings
+            ) {
+
+                hint.textContent =
+                    '⚠️ تعذر إيجاد مواعيد لهذه المدينة. تأكد من الاسم وحاول مرة أخرى.';
+
+                return;
+
+            }
+
+
+            const t =
+                data.data.timings;
+
+
+            document.getElementById('prayerFajr')
+                .textContent =
+                t.Fajr || '--:--';
+
+
+            document.getElementById('prayerDhuhr')
+                .textContent =
+                t.Dhuhr || '--:--';
+
+
+            document.getElementById('prayerAsr')
+                .textContent =
+                t.Asr || '--:--';
+
+
+            document.getElementById('prayerMaghrib')
+                .textContent =
+                t.Maghrib || '--:--';
+
+
+            document.getElementById('prayerIsha')
+                .textContent =
+                t.Isha || '--:--';
+
+
+            hint.textContent =
+                '✅ آخر تحديث: '
+                +
+                new Date()
+                .toLocaleString('ar-EG');
+
+        })
+
+
+        .catch(function() {
+
+            hint.textContent =
+                '⚠️ تعذر الاتصال بخدمة مواعيد الصلاة. تحقق من الإنترنت.';
+
+        });
+
+}
+
+
+(function initPrayerCityFromStorage() {
+
+    try {
+
+        const savedCity =
+            localStorage.getItem(
+                'wellness_prayer_city'
+            );
+
+
+        const savedCountry =
+            localStorage.getItem(
+                'wellness_prayer_country'
+            );
+
+
+        if (savedCity) {
+
+            document.getElementById('prayerCity')
+                .value =
+                savedCity;
+
+
+            document.getElementById('prayerCountry')
+                .value =
+                savedCountry || '';
+
+
+            fetchPrayerTimes();
+
+        }
+
+    }
+
+    catch (e) {}
+
+})();
+
+
+/* =========================================================
+   جدول المواعيد
+   مستقل عن ERP و Firebase
+========================================================= */
+
+const scheduleTypeLabels = {
+
+    prayer:
+        '🕌 صلاة',
+
+    exercise:
+        '🏃 تمارين',
+
+    meditation:
+        '🧘 تأمل',
+
+    other:
+        '📌 أخرى'
+
+};
+
+
+const SCHEDULE_STORAGE_KEY =
+    'academy_wellness_schedule';
+
+
+function getScheduleItems() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                SCHEDULE_STORAGE_KEY
+            )
+            ||
+            '[]'
+        );
+
+    }
+
+    catch (e) {
+
+        return [];
+
+    }
+
+}
+
+
+function saveScheduleItems(items) {
+
+    try {
+
+        localStorage.setItem(
+            SCHEDULE_STORAGE_KEY,
+            JSON.stringify(items)
+        );
+
+    }
+
+    catch (e) {
+
+        alert(
+            '⚠️ تعذر حفظ الموعد على هذا الجهاز.'
+        );
+
+    }
+
+}
+
+
+function escapeHtml(value) {
+
+    return String(value || '')
+
+        .replace(
+            /&/g,
+            '&amp;'
+        )
+
+        .replace(
+            /</g,
+            '&lt;'
+        )
+
+        .replace(
+            />/g,
+            '&gt;'
+        )
+
+        .replace(
+            /"/g,
+            '&quot;'
+        )
+
+        .replace(
+            /'/g,
+            '&#039;'
+        );
+
+}
+
+
+function renderSchedule() {
+
+    const items =
+        getScheduleItems();
+
+
+    items.sort(function(a, b) {
+
+        return (
+            a.time || ''
+        )
+        .localeCompare(
+            b.time || ''
+        );
+
+    });
+
+
+    const body =
+        document.getElementById(
+            'scheduleTableBody'
+        );
+
+
+    if (items.length === 0) {
+
+        body.innerHTML =
+            '<tr>' +
+
+            '<td colspan="4" class="schedule-empty">' +
+
+            'لا توجد مواعيد مضافة بعد' +
+
+            '</td>' +
+
+            '</tr>';
+
+        return;
+
+    }
+
+
+    let html = '';
+
+
+    items.forEach(function(item, index) {
+
+        html +=
+
+            '<tr>' +
+
+            '<td>' +
+            escapeHtml(item.time || '') +
+            '</td>' +
+
+            '<td>' +
+            (
+                scheduleTypeLabels[item.type]
+                ||
+                '📌 أخرى'
+            ) +
+            '</td>' +
+
+            '<td>' +
+            escapeHtml(item.title || '') +
+            '</td>' +
+
+            '<td>' +
+
+            '<button class="schedule-del" ' +
+
+            'onclick="deleteScheduleItem(' +
+            index +
+            ')">' +
+
+            '✕ حذف' +
+
+            '</button>' +
+
+            '</td>' +
+
+            '</tr>';
+
+    });
+
+
+    body.innerHTML =
+        html;
+
+}
+
+
+function addScheduleItem() {
+
+    const title =
+        document
+        .getElementById('scheduleTitle')
+        .value
+        .trim();
+
+
+    const time =
+        document
+        .getElementById('scheduleTime')
+        .value;
+
+
+    const type =
+        document
+        .getElementById('scheduleType')
+        .value;
+
+
+    if (!title) {
+
+        alert(
+            'اكتب اسم الموعد'
+        );
+
+        return;
+
+    }
+
+
+    if (!time) {
+
+        alert(
+            'اختر وقت الموعد'
+        );
+
+        return;
+
+    }
+
+
+    const items =
+        getScheduleItems();
+
+
+    items.push({
+
+        title:
+            title,
+
+        time:
+            time,
+
+        type:
+            type,
+
+        createdAt:
+            new Date().toISOString()
+
+    });
+
+
+    saveScheduleItems(
+        items
+    );
+
+
+    renderSchedule();
+
+
+    document.getElementById(
+        'scheduleTitle'
+    ).value = '';
+
+
+    document.getElementById(
+        'scheduleTime'
+    ).value = '';
+
+}
+
+
+function deleteScheduleItem(index) {
+
+    const items =
+        getScheduleItems();
+
+
+    if (
+        index < 0 ||
+        index >= items.length
+    ) {
+
+        return;
+
+    }
+
+
+    items.splice(
+        index,
+        1
+    );
+
+
+    saveScheduleItems(
+        items
+    );
+
+
+    renderSchedule();
+
+}
+
+
+renderSchedule();
+
+</script>
+
+</body>
+</html>
