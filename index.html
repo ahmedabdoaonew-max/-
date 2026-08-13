@@ -277,34 +277,59 @@
             </div>
 
         </div>
-  
-<a
+  <a
     href="/courses.html"
     class="academy-lectures-button">
 
-    🎓 المحاضرات التدريبية
+    <span class="lecture-icon">🎓</span>
+    <span>المحاضرات التدريبية</span>
 
 </a>
 
 
 <style>
 
+/* =====================================================
+   زر المحاضرات التدريبية
+   نفس تصميم أزرار الموقع مع شكل مختلف
+===================================================== */
+
 .academy-lectures-button {
 
-    display: inline-block;
+    width: 92%;
+    max-width: 610px;
 
-    padding: 14px 25px;
+    min-height: 115px;
 
-    border-radius: 14px;
+    margin: 20px auto;
+
+    padding: 20px 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 55px;
+
+    border: 3px solid #d4af37;
 
     background:
         linear-gradient(
             135deg,
-            #2563eb,
-            #1e3a8a
+            #101018 0%,
+            #18151f 50%,
+            #111018 100%
         );
 
-    color: white;
+    color: #e3bd32;
 
     text-decoration: none;
 
@@ -313,26 +338,189 @@
         Arial,
         sans-serif;
 
+    font-size: 27px;
+
     font-weight: bold;
 
-    box-shadow:
-        0 8px 25px
-        rgba(37,99,235,.25);
+    text-align: center;
 
-    transition: .25s;
+    box-shadow:
+        0 0 15px
+        rgba(212,175,55,.12),
+
+        inset 0 0 20px
+        rgba(212,175,55,.04);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
 
 }
 
+
+/* =====================================================
+   تأثير الإضاءة
+===================================================== */
+
+.academy-lectures-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 70%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    transform: skewX(-25deg);
+
+    transition: .7s;
+
+}
+
+
+.academy-lectures-button:hover::before {
+
+    left: 140%;
+
+}
+
+
+/* =====================================================
+   الأيقونة
+===================================================== */
+
+.lecture-icon {
+
+    font-size: 30px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(212,175,55,.4)
+        );
+
+}
+
+
+/* =====================================================
+   عند الضغط
+===================================================== */
+
+.academy-lectures-button:active {
+
+    transform:
+        scale(.97);
+
+}
+
+
+/* =====================================================
+   Hover
+===================================================== */
 
 .academy-lectures-button:hover {
 
     transform:
-        translateY(-2px);
+        translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #17151e,
+            #211d28,
+            #17151e
+        );
+
+    box-shadow:
+
+        0 0 22px
+        rgba(212,175,55,.25),
+
+        inset 0 0 25px
+        rgba(212,175,55,.06);
 
 }
 
-</style>
-        <!-- ========================================================= -->
+
+/* =====================================================
+   الهاتف
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .academy-lectures-button {
+
+        width: 92%;
+
+        min-height: 110px;
+
+        padding:
+            18px 20px;
+
+        border-radius: 55px;
+
+        border-width: 3px;
+
+        font-size: 24px;
+
+        gap: 10px;
+
+    }
+
+
+    .lecture-icon {
+
+        font-size: 27px;
+
+    }
+
+}
+
+
+/* =====================================================
+   الشاشات الصغيرة جدًا
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .academy-lectures-button {
+
+        min-height: 100px;
+
+        font-size: 21px;
+
+    }
+
+
+    .lecture-icon {
+
+        font-size: 24px;
+
+    }
+
+}
+
+</style>      <!-- ========================================================= -->
         <!-- الفروع -->
         <!-- ========================================================= -->
 
