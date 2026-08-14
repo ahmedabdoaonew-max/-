@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Super Admin | الأكاديمية الدولية
+    </title>
+
+    <link rel="stylesheet" href="admin.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section
+    id="adminLogin"
+    class="admin-login">
+
+
+    <div class="login-card">
+
+
+        <div class="admin-icon">
+            🔐
+        </div>
+
+
+        <h1>
+            Super Admin
+        </h1>
+
+
+        <p>
+            لوحة التحكم الخاصة بالإدارة
+        </p>
+
+
+        <div class="input-group">
+
+            <label>
+                كلمة مرور Super Admin
+            </label>
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="أدخل كلمة المرور">
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="adminLogin()">
+
+            دخول لوحة التحكم
+
+        </button>
+
+
+        <div
+            id="adminLoginMessage"
+            class="message">
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
+
+<section
+    id="adminPanel"
+    class="hidden">
+
+
+    <!-- HEADER -->
+
+    <header class="admin-header">
+
+        <div>
+
+            <span class="admin-badge">
+                SUPER ADMIN
+            </span>
+
+            <h1>
+                لوحة إدارة المحاضرات
+            </h1>
+
+            <p>
+                تحكم كامل في المشتركين والـ IDs
+            </p>
+
+        </div>
+
+
+        <button
+            class="logout-btn"
+            onclick="adminLogout()">
+
+            تسجيل الخروج
+
+        </button>
+
+    </header>
+
+
+
+    <main class="admin-container">
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================= -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <span>
+                    👥
+                </span>
+
+                <div>
+
+                    <small>
+                        إجمالي المشتركين
+                    </small>
+
+                    <strong id="totalUsers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <span>
+                    ✅
+                </span>
+
+                <div>
+
+                    <small>
+                        المشتركين المفعلين
+                    </small>
+
+                    <strong id="approvedUsers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <span>
+                    👁️
+                </span>
+
+                <div>
+
+                    <small>
+                        تمت المشاهدة
+                    </small>
+
+                    <strong id="watchedUsers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <span>
+                    🚫
+                </span>
+
+                <div>
+
+                    <small>
+                        المحظورين
+                    </small>
+
+                    <strong id="blockedUsers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MANUAL ID
+        ================================================= -->
+
+        <section class="admin-card">
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        🎫
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            تعيين ID يدويًا
+                        </h2>
+
+                        <p>
+                            أنت من تختار الـ ID للعميل.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="manual-id-grid">
+
+
+                <div class="input-group">
+
+                    <label>
+                        UID العميل
+                    </label>
+
+                    <input
+                        type="text"
+                        id="manualUid"
+                        placeholder="UID العميل">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        الـ ID الجديد
+                    </label>
+
+                    <input
+                        type="text"
+                        id="manualId"
+                        placeholder="مثال: IA-2026-001">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        القسم
+                    </label>
+
+                    <select id="manualCourse">
+
+                        <option value="section1">
+                            القسم الأول
+                        </option>
+
+                        <option value="section2">
+                            القسم الثاني
+                        </option>
+
+                        <option value="section3">
+                            القسم الثالث
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="manual-button">
+
+                    <button
+                        class="primary-btn"
+                        onclick="changeManualId()">
+
+                        حفظ الـ ID
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                id="manualIdMessage"
+                class="message">
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CREATE CUSTOMER
+        ================================================= -->
+
+        <section class="admin-card">
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        ➕
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            إضافة مشترك يدويًا
+                        </h2>
+
+                        <p>
+                            يمكنك إنشاء طلب للعميل
+                            قبل إعطائه الـ ID.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="input-group">
+
+                    <label>
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="newEmail"
+                        placeholder="email@example.com">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        رقم الهاتف
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="newPhone"
+                        placeholder="01xxxxxxxxx">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        اسم العميل
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newName"
+                        placeholder="اسم العميل">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        القسم
+                    </label>
+
+                    <select id="newCourse">
+
+                        <option value="section1">
+                            القسم الأول
+                        </option>
+
+                        <option value="section2">
+                            القسم الثاني
+                        </option>
+
+                        <option value="section3">
+                            القسم الثالث
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="primary-btn"
+                    onclick="createCustomer()">
+
+                    إنشاء المشترك
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="createMessage"
+                class="message">
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SEARCH
+        ================================================= -->
+
+        <section class="admin-card">
+
+
+            <div class="search-row">
+
+                <input
+                    type="search"
+                    id="searchUsers"
+                    placeholder="🔎 ابحث بالإيميل أو الهاتف أو ID أو الاسم..."
+                    oninput="filterUsers()">
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadUsers()">
+
+                    🔄 تحديث
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             USERS
+        ================================================= -->
+
+        <section class="admin-card">
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        👥
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            المشتركين
+                        </h2>
+
+                        <p>
+                            جميع حسابات المحاضرات
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="usersContainer"
+                class="users-container">
+
+                <div class="loading">
+                    جارٍ تحميل البيانات...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+
+
+</section>
+
+
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>
