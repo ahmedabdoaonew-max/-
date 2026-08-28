@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.vercel.internationalacademy.twa",
+    "sha256_cert_fingerprints": ["5B:BF:02:9F:47:0B:EA:BF:A1:9F:65:B3:B2:6B:B1:4E:73:EE:BA:A1:95:6C:4C:86:3E:E2:C1:C1:9F:19:F2:17"]
+  }
+}]
