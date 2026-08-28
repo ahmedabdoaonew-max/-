@@ -143,27 +143,26 @@ async function handleRegister(event) {
         const cred = await auth.createUserWithEmailAndPassword(email, password);
         await cred.user.updateProfile({ displayName: name });
 
-        // ملف المستخدم في Firestore بيتنشئ تلقائياً من Cloud Function (onCreate trigger)
-        // بعد إنشاء الحساب مباشرة — القواعد الالأكاديمية الدولية تمنع العميل من إنشائه بنفسه
-        // (allow create: if false في users/{uid})، لذلك ننتظر ظهوره ثم نكمّل
-        // الاسم/الهاتف عبر update (مسموح للمستخدم بتعديل حقوله الخاصة فقط).
-        let doc = await db.collection('users').doc(cred.user.uid).get();
-        let tries = 0;
-        while (!doc.exists && tries < 8) {
-            await new Promise(r => setTimeout(r, 700));
-            doc = await db.collection('users').doc(cred.user.uid).get();
-            tries++;
-        }
-        if (doc.exists) {
-            try {
-                await db.collection('users').doc(cred.user.uid).update({ name, phone: phone || '' });
-            } catch (e) {
-                console.warn('تعذّر تحديث الاسم/الهاتف مباشرة بعد التسجيل', e);
-            }
-            doc = await db.collection('users').doc(cred.user.uid).get();
-        }
+        // ملف المستخدم في Firestore بيتنشئ مباشرة من العميل هنا (بدون Cloud Function)
+        // القاعدة في firestore.rules بتسمح بالإنشاء فقط لو صاحب الحساب نفسه
+        // وبشرط role = 'student' — يعني محدش يقدر يمنح نفسه صلاحية أدمن.
+        const newUserData = {
+            name,
+            email,
+            phone: phone || '',
+            role: 'student',
+            allowedSections: [],
+            allowedSubSections: [],
+            subscriptionType: 'free',
+            paymentStatus: 'unpaid',
+            blocked: false,
+            referralCode: '',
+            rewardCredits: 0,
+            createdAt: new Date().toISOString()
+        };
+        await db.collection('users').doc(cred.user.uid).set(newUserData);
 
-        const profile = _profileFromDoc(cred.user.uid, doc.exists ? doc.data() : { name, phone });
+        const profile = _profileFromDoc(cred.user.uid, newUserData);
         _cacheUser(profile);
 
         showToast('تم إنشاء الحساب بنجاح! مرحباً بك');
