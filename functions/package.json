@@ -1,0 +1,17 @@
+{
+  "name": "international-academy-functions",
+  "description": "Cloud Functions - الأكاديمية الدولية",
+  "engines": { "node": "20" },
+  "main": "index.js",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions,firestore",
+    "deploy": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^4.9.0",
+    "node-fetch": "^2.7.0"
+  },
+  "private": true
+}
