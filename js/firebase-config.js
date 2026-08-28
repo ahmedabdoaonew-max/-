@@ -9,7 +9,7 @@ const firebaseConfig = {
     projectId: "courses-68a1e",
     storageBucket: "courses-68a1e.firebasestorage.app",
     messagingSenderId: "424796584661",
-    appId: "1:424796584661:web:1cceded7709c1643c0405c"
+    appId: "1:424796584661:web:ebffb87cd323ae3ac0405c"
 };
 
 // تهيئة Firebase (يستخدم SDK النسخة المتوافقة compat - بدون أدوات بناء)
