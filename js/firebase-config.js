@@ -4,12 +4,12 @@
    بعد إنشاء المشروع فعّل: Authentication (Email/Password) + Firestore Database
    ============================================ */
 const firebaseConfig = {
-    apiKey: "AIzaSyBCJUNaUO5LTjCu0koWu-RDGJh0uORJ2iE",
-    authDomain: "courses-68a1e.firebaseapp.com",
-    projectId: "courses-68a1e",
-    storageBucket: "courses-68a1e.firebasestorage.app",
-    messagingSenderId: "424796584661",
-    appId: "1:424796584661:web:ebffb87cd323ae3ac0405c"
+    apiKey: "AIzaSyBjLyD4xWlNB_YBVeGAkTx8gJmGFvDSrS4",
+    authDomain: "international-academy-d0e86.firebaseapp.com",
+    projectId: "international-academy-d0e86",
+    storageBucket: "international-academy-d0e86.firebasestorage.app",
+    messagingSenderId: "265313485970",
+    appId: "1:265313485970:web:b06c19e20d75824cd2924b"
 };
 
 // تهيئة Firebase (يستخدم SDK النسخة المتوافقة compat - بدون أدوات بناء)
