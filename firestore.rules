@@ -1,0 +1,199 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function myRole() {
+      return isSignedIn()
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role
+        : 'guest';
+    }
+
+    function isAdminRole() {
+      return myRole() in ['super_admin', 'admin', 'content_manager', 'finance', 'support'];
+    }
+
+    function isSuperAdmin() {
+      return myRole() == 'super_admin';
+    }
+
+    // ===== users/{uid} =====
+    // كل مستخدم يقرأ ملفه فقط، ويعدّل فقط الحقول غير الحساسة (name, phone).
+    // الأدمن (Super Admin) يقدر يقرأ/يعدّل أي مستخدم — بما فيها الصلاحيات
+    // والحظر والاشتراك. باقي الأدوار (content_manager, finance, support) قراءة فقط.
+    match /users/{uid} {
+      allow read: if isSignedIn() && (request.auth.uid == uid || isAdminRole());
+
+      allow update: if isSignedIn() && request.auth.uid == uid
+                    && request.resource.data.diff(resource.data).affectedKeys()
+                       .hasOnly(['name', 'phone']);
+
+      allow update: if isSuperAdmin();
+
+      // الإنشاء يتم فقط عبر Cloud Function (onCreate trigger) بصلاحيات admin —
+      // لا نسمح بإنشاء المستند مباشرة من العميل لمنع منح صلاحيات لنفسك عند التسجيل.
+      allow create: if false;
+      allow delete: if isSuperAdmin();
+    }
+
+    // ===== purchases/{purchaseId} =====
+    // سجل الشراء لا يُكتب إلا من السيرفر (Cloud Function بعد تأكيد Paymob).
+    match /purchases/{purchaseId} {
+      allow read: if isSignedIn() &&
+                     (resource.data.userId == request.auth.uid || isAdminRole());
+      allow write: if false; // كتابة السيرفر فقط (Admin SDK يتجاوز القواعد)
+    }
+
+    // ===== payments/{paymentId} =====
+    match /payments/{paymentId} {
+      allow read: if isSignedIn() &&
+                     (resource.data.userId == request.auth.uid || isAdminRole());
+      allow write: if false;
+    }
+
+    // ===== registrations/{lectureId__name} - نظام "المحاضرات الأونلاين" المبسّط =====
+    // بدون Cloud Function (كما طلب المستخدم): أي زائر يسجّل حضوره لمحاضرة بنفسه
+    // ويحدّث عدد مرات مشاهدته، لكن قراءة كل السجلات وحذفها للأدمن فقط.
+    match /registrations/{id} {
+      allow create, update: if true;
+      allow read, delete: if isAdminRole();
+    }
+
+    // ===== subscriptionRequests/{uid_sectionId} (طلب اشتراك في قسم عبر واتساب + موافقة أدمن) =====
+    match /subscriptionRequests/{id} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdminRole());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAdminRole() &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+      allow delete: if false;
+    }
+
+    // ===== accessRequests/{uid_lectureId} (نظام "موافقة الأدمن" لمحاضرة معينة) =====
+    // الإنشاء عبر Cloud Function فقط (requestLectureAccess) لمنع تلاعب المستخدم
+    // بحالة طلبه مباشرة. الأدمن يقدر يغيّر status فقط (موافقة/رفض).
+    match /accessRequests/{id} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdminRole());
+      allow create: if false;
+      allow update: if isAdminRole() &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+      allow delete: if false;
+    }
+
+    // ===== lectures/{id} (نظام "محاضرة بالكود" المستقل عن الأقسام الـ13) =====
+    // البيانات العامة (العنوان، السعر، الحالة) تُقرأ من الكل. رابط الفيديو
+    // الحقيقي في secureContent — لا يُقرأ من العميل إطلاقاً، فقط Cloud Function
+    // (verifyLectureAccess) تقرأه بصلاحيات Admin SDK بعد التحقق من الكود+الاسم+حد المشاهدات.
+    match /lectures/{lectureId} {
+      allow read: if true;
+      allow write: if isAdminRole();
+
+      match /secureContent/{docId} {
+        allow read: if isAdminRole(); // العميل العادي لا يقرأ هذا المسار أبداً
+        allow write: if isAdminRole();
+      }
+
+      match /viewLog/{nameKey} {
+        allow read: if isAdminRole();
+        allow write: if false; // Cloud Function فقط (Admin SDK يتجاوز القواعد)
+      }
+    }
+
+    // ===== courses / sections / lectures (metadata عامة) =====
+    // الوصف والعنوان والسعر يقدر الكل يشوفهم. رابط الفيديو الفعلي
+    // يُخزَّن في مستند فرعي منفصل محمي (secureContent) — راجع الخطوة التالية.
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if isAdminRole();
+
+      match /lectures/{lectureId} {
+        allow read: if true;
+        allow write: if isAdminRole();
+
+        // رابط الفيديو المحمي: يُقرأ فقط لو عند المستخدم سجل شراء لنفس الكورس،
+        // أو القسم مجاني، أو هو أدمن. هذا هو مكان حماية المحتوى الحقيقي
+        // بدل الاعتماد على إخفائه في الواجهة فقط.
+        match /secureContent/{docId} {
+          allow read: if isAdminRole() ||
+            get(/databases/$(database)/documents/courses/$(courseId)).data.free == true ||
+            exists(/databases/$(database)/documents/purchases/$(request.auth.uid + '_' + courseId));
+          allow write: if false;
+        }
+      }
+    }
+
+    // ===== certificates, reviews, notifications, coupons, packages =====
+    match /certificates/{id} {
+      allow read: if true; // للتحقق العام من صفحة verify.html
+      allow write: if isAdminRole();
+    }
+    match /reviews/{id} {
+      allow read: if true;
+      allow create: if isSignedIn();
+      allow update, delete: if isAdminRole();
+    }
+    match /notifications/{id} {
+      allow read: if isSignedIn() &&
+                     (resource.data.userId == request.auth.uid || isAdminRole());
+      allow write: if isAdminRole();
+    }
+    match /coupons/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdminRole();
+    }
+    match /packages/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+    match /activityLogs/{id} {
+      allow read: if isAdminRole();
+      allow write: if false; // Cloud Functions فقط
+    }
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+    match /sectionSettings/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+    match /sections/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+    match /onlineCategories/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+
+    // ===== منصة "المحاضرات المتخصصة" (3 أقسام × محاضرات محمية بـ ID) =====
+    // نفس نمط registrations/lectures القديم: قراءة عامة، تسجيل المشاهدة يتم
+    // مباشرة من العميل (بدون Cloud Function)، وكل تعديل حقيقي للأدمن فقط.
+    match /lectureGroups/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+    match /lectureGroupItems/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+    match /lectureGroupViews/{id} {
+      allow create, update: if true;
+      allow read, delete: if isAdminRole();
+    }
+
+    // ===== الكتب التعليمية (books) — عرض عام + طلب شراء عبر واتساب =====
+    match /books/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+
+    // ===== أطباء جلستك النفسية (psychDoctors) — عرض عام + إدارة من لوحة التحكم =====
+    match /psychDoctors/{id} {
+      allow read: if true;
+      allow write: if isAdminRole();
+    }
+  }
+}

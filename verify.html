@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B4B8C">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <title>التحقق من الشهادة | الأكاديمية الدولية</title>
+    <meta name="description" content="تحقق من صحة شهادتك الصادرة من الأكاديمية الدولية.">
+    <link rel="canonical" href="https://internationalacademy.vercel.app/verify.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="التحقق من الشهادة | الأكاديمية الدولية">
+    <meta property="og:description" content="تحقق من صحة شهادتك الصادرة من الأكاديمية الدولية.">
+    <meta property="og:url" content="https://internationalacademy.vercel.app/verify.html">
+    <meta property="og:locale" content="ar_AR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="التحقق من الشهادة | الأكاديمية الدولية">
+    <meta name="twitter:description" content="تحقق من صحة شهادتك الصادرة من الأكاديمية الدولية.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الأكاديمية الدولية</span>
+            </a>
+            <a href="login.html" id="headerQuickLogin" class="header-quick-login">تسجيل الدخول</a>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="certificates.html">الشهادات</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="cert-hero">
+        <div class="cert-hero-inner">
+            <h1><i class="fas fa-shield-halved"></i> التحقق من صحة الشهادة</h1>
+            <p style="opacity:0.9;">أدخل كود الشهادة السري لعرض بيانات المتدرب وصورته وصورة الشهادة</p>
+            <div class="cert-hero-badges">
+                <span class="cert-hero-badge">⭐ أول مؤسسة أكاديمية متخصصة</span>
+                <span class="cert-hero-badge">🎓 برامج معتمدة</span>
+                <span class="cert-hero-badge">🔒 تحقق سري وآمن</span>
+            </div>
+            <form class="cert-search-box" onsubmit="verifyCertificate(event)">
+                <input type="text" id="verifyCode" placeholder="مثال: CERT-001" required>
+                <button type="submit">تحقق الآن</button>
+            </form>
+        </div>
+    </section>
+
+    <p style="text-align:center;color:#C62828;font-size:0.85rem;padding:12px 20px 0;">صفحة خاصة — غير معلنة للعامة</p>
+
+    <div style="max-width:700px;margin:0 auto;padding:20px;" id="verifyResult"></div>
+
+    <!-- Firebase (Auth + Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js?v=6"></script>
+    <script src="js/certificates-seed.js"></script>
+    <script src="js/certificates.js?v=6"></script>
+</body>
+</html>

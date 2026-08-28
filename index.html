@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B4B8C">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+
+    <!-- ====== ⚠️ عدّل الدومين هنا مرة واحدة، وطبّقه في باقي الملفات (robots.txt, sitemap.xml) ====== -->
+    <!-- DOMAIN: https://internationalacademy.vercel.app -->
+
+    <title>الأكاديمية الدولية | التدريب والاستشارات العلمية</title>
+    <meta name="description" content="الأكاديمية الدولية للتدريب والاستشارات العلمية — برامج تدريبية معتمدة، محاضرات متخصصة، وشهادات موثقة بإشراف متخصصين.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="الأكاديمية الدولية">
+
+    <!-- ====== 👇 الصق هنا سطر google-site-verification اللي هيديهولك Google Search Console ====== -->
+
+
+    <link rel="canonical" href="https://internationalacademy.vercel.app/">
+
+    <!-- Open Graph (فيسبوك / واتساب / لينكدإن) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="الأكاديمية الدولية">
+    <meta property="og:title" content="الأكاديمية الدولية | التدريب والاستشارات العلمية">
+    <meta property="og:description" content="الأكاديمية الدولية للتدريب والاستشارات العلمية — برامج تدريبية معتمدة، محاضرات متخصصة، وشهادات موثقة بإشراف متخصصين.">
+    <meta property="og:url" content="https://internationalacademy.vercel.app/">
+    <meta property="og:image" content="https://i.postimg.cc/HkDbnFpd/WA-1784067108744.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ar_AR">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="الأكاديمية الدولية | التدريب والاستشارات العلمية">
+    <meta name="twitter:description" content="الأكاديمية الدولية للتدريب والاستشارات العلمية — برامج تدريبية معتمدة، محاضرات متخصصة، وشهادات موثقة بإشراف متخصصين.">
+    <meta name="twitter:image" content="https://i.postimg.cc/HkDbnFpd/WA-1784067108744.jpg">
+
+    <!-- تسريع الاتصال بمصادر خارجية (خط الأيقونات) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=8">
+
+    <!-- ====== Schema.org JSON-LD — Brand SEO (منظمة تعليمية + موقع) ====== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "الأكاديمية الدولية",
+        "alternateName": "International Academy",
+        "url": "https://internationalacademy.vercel.app/",
+        "logo": "https://i.postimg.cc/HkDbnFpd/WA-1784067108744.jpg",
+        "description": "الأكاديمية الدولية للتدريب والاستشارات العلمية — برامج تدريبية معتمدة، محاضرات متخصصة، وشهادات موثقة بإشراف متخصصين.",
+        "sameAs": [
+            "https://www.facebook.com/share/1Ez1SXMvMR/",
+            "https://www.tiktok.com/@d..mohammed.qootp?_r=1&_t=ZS-99FMfhyGpXc",
+            "https://www.youtube.com/@YOUR-CHANNEL"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "الأكاديمية الدولية",
+        "url": "https://internationalacademy.vercel.app/"
+    }
+    </script>
+</head>
+<body>
+    <!-- شاشة الترحيب -->
+    <div class="splash-screen" id="splash">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1 class="splash-title">الأكاديمية الدولية</h1>
+            <p class="splash-subtitle">للتدريب والاستشارات العلمية</p>
+        </div>
+    </div>
+
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الأكاديمية الدولية</span>
+            </a>
+            <a href="login.html" id="headerQuickLogin" class="header-quick-login">تسجيل الدخول</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="courses.html">البرامج التدريبية</a>
+                <a href="lectures.html">المحاضرات</a>
+                <a href="books.html">الكتب التعليمية</a>
+                <a href="certificates.html">الشهادات</a>
+                <a href="about.html">عن الأكاديمية</a>
+                <a href="contact.html">تواصل معنا</a>
+                <a href="admin.html" class="btn-outline" title="لوحة الإدارة" style="border-color:#0E2F5C;">
+                    <i class="fas fa-shield-halved"></i> الإدارة
+                </a>
+                <div id="authButtons" style="display:flex;gap:8px;">
+                    <a href="login.html" class="btn-outline">تسجيل الدخول</a>
+                    <a href="register.html" class="btn-primary">إنشاء حساب</a>
+                </div>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <div class="notif-bell-wrap">
+                        <button type="button" class="notif-bell-btn" id="notifBellBtn" onclick="toggleNotifPanel()">
+                            <i class="fas fa-bell"></i>
+                            <span class="notif-badge" id="notifBadge"></span>
+                        </button>
+                        <div class="notif-panel" id="notifPanel">
+                            <div class="notif-panel-header">الإشعارات</div>
+                            <div id="notifList"></div>
+                        </div>
+                    </div>
+                    <a href="profile.html"><i class="fas fa-user-circle"></i> <span class="user-name"></span></a>
+                    <a href="admin.html" id="adminNavLink" style="display:none;" class="btn-primary"><i class="fas fa-cog"></i> لوحة التحكم</a>
+                    <button onclick="logout()" class="btn-outline" style="padding:6px 14px;">خروج</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الأزرار العائمة -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/201116677208" target="_blank" class="float-btn float-whatsapp" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@d..mohammed.qootp?_r=1&amp;_t=ZS-99FMfhyGpXc" target="_blank" class="float-btn float-tiktok" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/1Ez1SXMvMR/" target="_blank" class="float-btn float-facebook" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <!-- بانر التحقق من الشهادة -->
+    <section class="cert-hero">
+        <div class="cert-hero-inner">
+            <h1><i class="fas fa-shield-halved"></i> التحقق من صحة الشهادة</h1>
+            <p style="opacity:0.9;">أدخل كود الشهادة (ID) لعرض بيانات المتدرب وصورته وصورة الشهادة</p>
+            <div class="cert-hero-badges">
+                <span class="cert-hero-badge">⭐ أكاديمية متخصصة في التدريب والاستشارات العلمية</span>
+                <span class="cert-hero-badge">🎓 برامج معتمدة</span>
+                <span class="cert-hero-badge">🔒 تحقق فوري وآمن</span>
+            </div>
+            <form class="cert-search-box" onsubmit="verifyCertificate(event)">
+                <input type="text" id="verifyCode" placeholder="" required>
+                <button type="submit">تحقق الآن</button>
+            </form>
+            <div id="verifyResult" style="margin-top:20px;text-align:right;"></div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- زر اكتشف أطباء جلستك النفسية (يُتحكم في محتوى الصفحة التالية بالكامل من لوحة التحكم) -->
+    <section class="psych-cta-section">
+        <a href="psych-session.html" class="psych-cta-btn">
+            <i class="fas fa-heart-pulse"></i> اكتشف أطباء جلستك النفسية
+        </a>
+    </section>
+
+    <!-- البانر الرئيسي -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image:url('https://i.postimg.cc/zX1nX9z4/WA-1784067483213.jpg?w=1600&q=80')"></div>
+            <div class="slide" style="background-image:url('https://i.postimg.cc/zX1nX9z4/WA-1784067483213.jpg?w=1600&q=80')"></div>
+            <div class="slide" style="background-image:url('https://i.postimg.cc/zX1nX9z4/WA-1784067483213.jpg?w=1600&q=80')"></div>
+            <div class="slide" style="background-image:url('https://i.postimg.cc/zX1nX9z4/WA-1784067483213.jpg?w=1600&q=80')"></div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge"><i class="fas fa-star"></i> منصة متخصصة في التدريب والاستشارات العلمية</span>
+                <h1 class="hero-title">رحلتك نحو التميز المهني<br>تبدأ من هنا</h1>
+                <p class="hero-desc">برامج تدريبية معتمدة، استشارات علمية متخصصة، ودعم مستمر من نخبة الخبراء والمدربين.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">+500</span>
+                        <span class="stat-label">متدرب</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30</span>
+                        <span class="stat-label">محاضرة أونلاين</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">شهادات معتمدة</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3><i class="fas fa-graduation-cap"></i> برامجنا التدريبية</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> برامج تدريبية معتمدة</li>
+                    <li><i class="fas fa-check-circle"></i> استشارات علمية متخصصة</li>
+                    <li><i class="fas fa-check-circle"></i> محاضرات وورش عمل احترافية</li>
+                    <li><i class="fas fa-check-circle"></i> شهادات معتمدة عند إتمام البرنامج</li>
+                </ul>
+                <a href="courses.html" class="btn-primary">استكشف البرامج</a>
+                <div class="hero-card-actions">
+                    <a href="#" id="cvLink" target="_blank" class="cv-btn cv-btn-sm">
+                        <i class="fas fa-file-alt"></i> السيرة الذاتية
+                    </a>
+                    <a href="https://courses-two-eta.vercel.app/" target="_blank" rel="noopener" class="cv-btn cv-btn-sm" style="background:linear-gradient(135deg, var(--primary-blue), var(--primary-dark));color:white;">
+                        <i class="fas fa-clapperboard"></i> المحاضرات الأونلاين
+                    </a>
+                    <a href="psych-session.html" class="cv-btn cv-btn-sm" style="background:linear-gradient(135deg, var(--primary-blue), var(--primary-dark));color:white;border:1px solid var(--gold);">
+                        <i class="fas fa-heart-pulse"></i> اكتشف أطباء جلستك النفسية
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- التحقق من الشهادة سري: عبر verify.html فقط (غير ظاهر للعامة) -->
+
+    <!-- فيديو تعريفي بصورة مصغرة -->
+    <section class="home-video-section">
+        <div class="section-header">
+            <h2>تعرّف على الأكاديمية</h2>
+            
+        </div>
+        <div class="video-thumb-wrap" id="homeVideoWrap"
+             data-video="https://videotourl.com/videos/1784079076779-9980f13e-7cb9-416e-ba2e-9ed8ab92ab9e.mp4">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" alt="صورة مصغرة للفيديو">
+            <button type="button" class="video-play-btn" aria-label="تشغيل الفيديو">
+                <i class="fas fa-play"></i>
+            </button>
+        </div>
+        <p style="margin-top:12px;font-size:0.85rem;color:#888;"></p>
+    </section>
+
+    <div class="gold-divider"></div>
+
+  
+    <section class="sections-area" id="lecturesHub" style="padding-top:20px;">
+        <div class="section-header">
+            <h2>المحاضرات الأونلاين</h2>
+        </div>
+        <div class="sections-grid" id="lecturesHubGrid"></div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <section style="padding:40px 20px;text-align:center;">
+        <h2 style="color:var(--primary-dark);margin-bottom:8px;">المكتبة التعليمية</h2>
+        <p style="color:var(--text-muted);max-width:560px;margin:0 auto 18px;">تصفّح الكتب التعليمية المتاحة واطلب نسختك الآن.</p>
+        <a href="books.html" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:30px;">
+            <i class="fas fa-book"></i> عرض الكتب التعليمية
+        </a>
+    </section>
+
+    <div class="gold-divider"></div>
+
+   
+    <section style="padding:40px 20px;text-align:center;background:var(--white);">
+        <h2 style="color:var(--primary-dark);margin-bottom:8px;">المحاضرات الاونلاين</h2>
+        <p style="color:var(--text-muted);max-width:560px;margin:0 auto;">
+        <a href="https://courses-two-eta.vercel.app/" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:30px;margin-top:18px;">
+            <i class="fas fa-clapperboard"></i> المحاضرات الأونلاين
+        </a>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    
+    <section class="gallery-section">
+        <div class="section-header">
+            <h2>لحظات من رحلة السلام النفسي</h2>
+           
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="https://i.postimg.cc/8zfJR4zH/IMG-20260714-WA0095.jpg?w=800&q=80" alt="صفاء" class="active">
+                <img src="https://i.postimg.cc/Mpptqhtx/IMG-20260714-WA0072.jpg?w=800&q=80" alt="هدوء">
+                <div class="gallery-caption"> </div>
+            </div>
+            <div class="gallery-card">
+                <img src="https://i.postimg.cc/d16LsS57/IMG-20260714-WA0067.jpg?w=800&q=80" alt="تأمل" class="active">
+                <img src="https://i.postimg.cc/T3t7bRhY/IMG-20260714-WA0098.jpg?w=800&q=80" alt="دعم">
+                <div class="gallery-caption"> </div>
+            </div>
+            <div class="gallery-card">
+                <img src="https://i.postimg.cc/TYyZf5PQ/IMG-20260714-WA0100.jpg?w=800&q=80" alt="نمو" class="active">
+                <img src="https://i.postimg.cc/RF6Hzj2k/IMG-20260715-WA0005.jpg?w=800&q=80" alt="تعلم">
+                <div class="gallery-caption"> </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- ====== 2. الدكتور محمد قطب ====== -->
+    <section id="lecturer">
+        <h2 class="section-title"><i class="fas fa-user-tie"></i> المحاضر الرئيسي</h2>
+        <div class="lecturer-card">
+            <div class="lecturer-avatar">
+                <!-- ====== ضع رابط صورة الدكتور هنا ====== -->
+                <img src="https://i.postimg.cc/J7jkgP3C/FB-IMG-1783377158550.jpg" alt="د. محمد قطب" />
+            </div>
+            <div class="lecturer-info">
+                <h3>د. محمد قطب</h3>
+                <p>خبير التدريب والاستشارات العلمية</p>
+                <a href="https://d-mohamed-qotp.vercel.app/" target="_blank" class="btn-cv">
+                    <i class="fas fa-user-graduate"></i> السيرة الذاتية
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- الأسئلة الشائعة -->
+    <section class="faq-section">
+        <div class="section-header">
+            <h2>الأسئلة الشائعة</h2>
+            <p>كل ما تريد معرفته عن برامجنا وخدماتنا</p>
+        </div>
+
+        <div class="faq-item">
+            <button type="button" class="faq-question">
+                من هو د. محمد قطب؟
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                عضو هيئة تدريس بجامعة شرق بورسعيد، ومدير مركز التدريب والاستشارات العلمية السابق، ومؤلف كتاب سيكولوجية المرأة.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button type="button" class="faq-question">
+                ما هي إنجازاته الأكاديمية؟
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                حقق العديد من الإنجازات في مجال الصحة النفسية والتدريب، وله إسهامات علمية معتمدة في تأهيل المدربين والأخصائيين النفسيين.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button type="button" class="faq-question">
+                هل الشهادات معتمدة؟
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                نعم، جميع الشهادات معتمدة وموثقة بختم شعار الجمهورية، ومعترف بها في المؤسسات الأكاديمية والمهنية.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button type="button" class="faq-question">
+                كيف يمكن الحجز؟
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                يرجى التوجه إلى أقرب فرع، متواجدون يوميًا من 2 ظهرًا وحتى 8 مساءً. كما يمكنك الحجز إلكترونيًا من خلال زر "حجز الآن".
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button type="button" class="faq-question">
+                كيف أحجز استشارة نفسية؟
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                للحجز والاستشارة يرجى التواصل عبر واتساب: 01116677208 أو الاتصال على 01208727737.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button type="button" class="faq-question">
+                كيف أتطوع في الفريق؟
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                نرحب بكل متميز للانضمام لفريق عملنا. يمكنك إرسال سيرتك الذاتية عبر واتساب وسنتواصل معك.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button type="button" class="faq-question">
+                ما الذي يميز برامجكم؟
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                نضمن التأهيل العملي والنظري المعتمد لجميع المتدربين، مع متابعة مستمرة وشهادات موثقة بختم شعار الجمهورية.
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="footer-inner" style="text-align:center;">
+            <div>
+                <h4>الأكاديمية الدولية</h4>
+                <p style="opacity:0.85;font-size:0.95rem;line-height:1.7;max-width:480px;margin:0 auto;">منصة متخصصة في التدريب والاستشارات العلمية، تقدم برامج تدريبية عالية الجودة بإشراف متخصصين.</p>
+                <a href="about.html" class="btn-outline" style="display:inline-block;margin-top:14px;border-color:rgba(255,255,255,0.4);color:white;">عن الأكاديمية والروابط الكاملة ←</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 الأكاديمية الدولية للتدريب والاستشارات العلمية. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <!-- Firebase (Auth + Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js?v=6"></script>
+    <script src="js/auth.js?v=6"></script>
+    <script src="js/notifications.js?v=1"></script>
+    <script src="js/courses.js?v=6"></script>
+    <script src="js/lectures.js?v=6"></script>
+    <script src="js/payments.js?v=6"></script>
+    <script src="js/certificates-seed.js"></script>
+    <script src="js/certificates.js?v=6"></script>
+</body>
+</html>

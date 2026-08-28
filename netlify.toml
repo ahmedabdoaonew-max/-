@@ -1,0 +1,30 @@
+# إعدادات Netlify — الأكاديمية الدولية للتدريب والاستشارات العلمية
+# ارفع المجلد عبر GitHub ثم اربطه بـ Netlify
+
+[build]
+  publish = "."
+  # لا يوجد بناء — ملفات ثابتة
+  command = "echo 'Static site ready'"
+
+# رؤوس أمان أساسية
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# تخزين مؤقت للملفات الثابتة
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# ملاحظة: خادم Paymob (server/) يحتاج استضافة Node منفصلة
+# (Railway / Render / VPS). على Netlify يعمل الدفع في وضع المحاكاة
+# أو يمكنك ربط API خارجي عبر متغير بيئة لاحقاً.

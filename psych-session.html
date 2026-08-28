@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B4B8C">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <title>جلستك النفسية | الأكاديمية الدولية</title>
+    <meta name="description" content="اختر من نخبة أطباء الصحة النفسية للحصول على جلسة استشارية متميزة، وتواصل معهم مباشرة عبر واتساب.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الأكاديمية الدولية</span>
+            </a>
+            <a href="login.html" id="headerQuickLogin" class="header-quick-login">تسجيل الدخول</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="courses.html">البرامج التدريبية</a>
+                <a href="lectures.html">المحاضرات</a>
+                <a href="books.html">الكتب التعليمية</a>
+                <a href="certificates.html">الشهادات</a>
+                <a href="about.html">عن الأكاديمية</a>
+                <a href="contact.html">تواصل معنا</a>
+                <div id="authButtons" style="display:flex;gap:8px;">
+                    <a href="login.html" class="btn-outline">تسجيل الدخول</a>
+                    <a href="register.html" class="btn-primary">إنشاء حساب</a>
+                </div>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <div class="notif-bell-wrap">
+                        <button type="button" class="notif-bell-btn" id="notifBellBtn" onclick="toggleNotifPanel()">
+                            <i class="fas fa-bell"></i>
+                            <span class="notif-badge" id="notifBadge"></span>
+                        </button>
+                        <div class="notif-panel" id="notifPanel">
+                            <div class="notif-panel-header">الإشعارات</div>
+                            <div id="notifList"></div>
+                        </div>
+                    </div>
+                    <a href="profile.html"><i class="fas fa-user-circle"></i> <span class="user-name"></span></a>
+                    <button onclick="logout()" class="btn-outline" style="padding:6px 14px;">خروج</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="floating-buttons">
+        <a href="https://wa.me/201116677208" target="_blank" class="float-btn float-whatsapp" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@d..mohammed.qootp?_r=1&amp;_t=ZS-99FMfhyGpXc" target="_blank" class="float-btn float-tiktok" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/1Ez1SXMvMR/" target="_blank" class="float-btn float-facebook" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <section class="psych-hero">
+        <h1><i class="fas fa-heart-pulse"></i> جلستك النفسية</h1>
+        <p>اختر من نخبة أطباء الصحة النفسية للحصول على جلسة استشارية متميزة.</p>
+    </section>
+
+    <div id="psychDoctorsGrid" class="psych-grid"></div>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            © 2026 الأكاديمية الدولية. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <!-- Firebase (Auth + Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js?v=6"></script>
+    <script src="js/auth.js?v=6"></script>
+    <script src="js/notifications.js?v=1"></script>
+    <script src="js/psych-doctors.js?v=1"></script>
+</body>
+</html>

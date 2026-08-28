@@ -1,0 +1,9 @@
+# ====== دومين الموقع: https://internationalacademy.vercel.app ======
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /verify.html
+Disallow: /checkout.html
+Disallow: /profile.html
+
+Sitemap: https://internationalacademy.vercel.app/sitemap.xml

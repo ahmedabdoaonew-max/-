@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B4B8C">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <title>تواصل معنا | الأكاديمية الدولية</title>
+    <meta name="description" content="تواصل مع فريق الأكاديمية الدولية للتدريب والاستشارات العلمية.">
+    <link rel="canonical" href="https://internationalacademy.vercel.app/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="تواصل معنا | الأكاديمية الدولية">
+    <meta property="og:description" content="تواصل مع فريق الأكاديمية الدولية للتدريب والاستشارات العلمية.">
+    <meta property="og:url" content="https://internationalacademy.vercel.app/contact.html">
+    <meta property="og:locale" content="ar_AR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="تواصل معنا | الأكاديمية الدولية">
+    <meta name="twitter:description" content="تواصل مع فريق الأكاديمية الدولية للتدريب والاستشارات العلمية.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الأكاديمية الدولية</span>
+            </a>
+            <a href="login.html" id="headerQuickLogin" class="header-quick-login">تسجيل الدخول</a>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">عن الأكاديمية</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding:50px 20px;max-width:600px;margin:0 auto;">
+        <h1 style="text-align:center;color:var(--primary-dark);margin-bottom:8px;">تواصل معنا</h1>
+        <p style="text-align:center;color:var(--text-muted);margin-bottom:30px;">نحن هنا للإجابة على استفساراتك</p>
+
+        <div class="auth-card">
+            <form onsubmit="event.preventDefault(); showToast('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً'); this.reset();">
+                <div class="form-group">
+                    <label>الاسم</label>
+                    <input type="text" required placeholder="اسمك الكامل">
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" required placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>الرسالة</label>
+                    <textarea rows="5" required placeholder="اكتب رسالتك هنا..." style="resize:vertical;"></textarea>
+                </div>
+                <button type="submit" class="form-submit">إرسال الرسالة</button>
+            </form>
+        </div>
+
+        <div style="display:flex;justify-content:center;gap:20px;margin-top:30px;flex-wrap:wrap;">
+            <a href="https://wa.me/201116677208" target="_blank" class="float-btn float-whatsapp" style="position:static;"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@d..mohammed.qootp?_r=1&amp;_t=ZS-99FMfhyGpXc" target="_blank" class="float-btn float-tiktok" style="position:static;"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/share/1Ez1SXMvMR/" target="_blank" class="float-btn float-facebook" style="position:static;"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-bottom">© 2026 الأكاديمية الدولية</div>
+    </footer>
+
+    <!-- Firebase (Auth + Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js?v=6"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B4B8C">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <title>الشهادات | الأكاديمية الدولية</title>
+    <meta name="description" content="شهادات معتمدة من الأكاديمية الدولية للتدريب والاستشارات العلمية.">
+    <link rel="canonical" href="https://internationalacademy.vercel.app/certificates.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="الشهادات | الأكاديمية الدولية">
+    <meta property="og:description" content="شهادات معتمدة من الأكاديمية الدولية للتدريب والاستشارات العلمية.">
+    <meta property="og:url" content="https://internationalacademy.vercel.app/certificates.html">
+    <meta property="og:locale" content="ar_AR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="الشهادات | الأكاديمية الدولية">
+    <meta name="twitter:description" content="شهادات معتمدة من الأكاديمية الدولية للتدريب والاستشارات العلمية.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الأكاديمية الدولية</span>
+            </a>
+            <a href="login.html" id="headerQuickLogin" class="header-quick-login">تسجيل الدخول</a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="lectures.html">المحاضرات</a>
+                <a href="books.html">الكتب التعليمية</a>
+                <a href="certificates.html">الشهادات</a>
+                <a href="verify.html">التحقق</a>
+                <div id="authButtons" style="display:flex;gap:8px;">
+                    <a href="login.html" class="btn-outline">دخول</a>
+                </div>
+                <div id="userMenu" style="display:none;">
+                    <div class="notif-bell-wrap">
+                        <button type="button" class="notif-bell-btn" id="notifBellBtn" onclick="toggleNotifPanel()">
+                            <i class="fas fa-bell"></i>
+                            <span class="notif-badge" id="notifBadge"></span>
+                        </button>
+                        <div class="notif-panel" id="notifPanel">
+                            <div class="notif-panel-header">الإشعارات</div>
+                            <div id="notifList"></div>
+                        </div>
+                    </div>
+                    <a href="profile.html"><span class="user-name"></span></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding:40px 20px;text-align:center;background:var(--beige-soft);">
+        <h1 style="color:var(--primary-dark);">الشهادات المعتمدة</h1>
+        <p style="color:var(--text-muted);">شهادات صادرة عن الأكاديمية الدولية</p>
+    </section>
+
+    <section class="lectures-area">
+        <div class="lectures-grid" id="certificatesList"></div>
+    </section>
+
+    <div style="text-align:center;padding:20px;">
+        <a href="verify.html" class="btn-primary" style="padding:12px 28px;border-radius:30px;">التحقق من شهادة</a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bottom">© 2026 الأكاديمية الدولية</div>
+    </footer>
+
+    <!-- Firebase (Auth + Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js?v=6"></script>
+    <script src="js/auth.js?v=6"></script>
+    <script src="js/notifications.js?v=1"></script>
+    <script src="js/certificates-seed.js"></script>
+    <script src="js/certificates.js?v=6"></script>
+</body>
+</html>

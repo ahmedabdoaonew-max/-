@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B4B8C">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <title>إتمام الاشتراك | الأكاديمية الدولية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الأكاديمية الدولية</span>
+            </a>
+        </div>
+    </header>
+
+    <section style="max-width:480px;margin:40px auto;padding:0 20px;">
+        <div style="background:white;border-radius:16px;padding:28px;box-shadow:var(--shadow);">
+            <h2 style="color:var(--primary-dark);margin-bottom:6px;text-align:center;" id="checkoutTitle">إتمام الاشتراك</h2>
+            <p style="color:var(--text-muted);text-align:center;margin-bottom:24px;" id="checkoutDesc">جاري تحميل بيانات القسم...</p>
+
+            <div id="checkoutLoggedOut" style="display:none;text-align:center;">
+                <p style="margin-bottom:16px;color:var(--text-muted);">يجب تسجيل الدخول أولاً لإتمام الاشتراك</p>
+                <a href="login.html" class="btn-primary" style="display:inline-block;padding:12px 30px;border-radius:30px;">تسجيل الدخول</a>
+            </div>
+
+            <form id="checkoutForm" style="display:none;" onsubmit="submitCheckout(event)">
+                <div class="form-group">
+                    <label>الاسم</label>
+                    <input type="text" id="chkName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="chkEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="text" id="chkPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>كود دعوة صديق (اختياري) — خصم 10% لك وله</label>
+                    <input type="text" id="chkReferralCode" placeholder="IATC-XXXXXX" style="text-transform:uppercase;">
+                </div>
+                <div class="form-group" id="chkCreditWrap" style="display:none;">
+                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                        <input type="checkbox" id="chkUseCredit"> استخدام رصيد خصم مكتسب (<span id="chkCreditCount">0</span> متاح) — خصم 10%
+                    </label>
+                </div>
+                <button type="submit" id="checkoutBtn" class="form-submit">
+                    <i class="fas fa-lock"></i> الدفع الآمن عبر Paymob
+                </button>
+                <p style="text-align:center;color:#999;font-size:0.78rem;margin-top:10px;">سيتم تحويلك لصفحة دفع آمنة. الاشتراك يُفعَّل تلقائياً بعد تأكيد الدفع.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Firebase (Auth + Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js?v=6"></script>
+    <script src="js/auth.js?v=6"></script>
+    <script>
+        let checkoutSection = null;
+
+        async function initCheckout() {
+            const params = new URLSearchParams(window.location.search);
+            const sectionId = parseInt(params.get('section'), 10);
+            checkoutSection = sectionsData.find(s => s.id === sectionId);
+
+            if (!checkoutSection) {
+                document.getElementById('checkoutDesc').textContent = 'القسم غير موجود';
+                return;
+            }
+            document.getElementById('checkoutTitle').textContent = 'الاشتراك في: ' + checkoutSection.title;
+            document.getElementById('checkoutDesc').textContent = checkoutSection.desc || '';
+
+            document.addEventListener('authReady', (e) => {
+                const user = e.detail;
+                if (!user) {
+                    document.getElementById('checkoutLoggedOut').style.display = 'block';
+                    document.getElementById('checkoutForm').style.display = 'none';
+                } else {
+                    document.getElementById('checkoutLoggedOut').style.display = 'none';
+                    document.getElementById('checkoutForm').style.display = 'block';
+                    document.getElementById('chkName').value = user.name || '';
+                    document.getElementById('chkEmail').value = user.email || '';
+                    document.getElementById('chkPhone').value = user.phone || '';
+
+                    db.collection('users').doc(user.uid).get().then(doc => {
+                        const credits = (doc.exists && doc.data().rewardCredits) || 0;
+                        if (credits > 0) {
+                            document.getElementById('chkCreditWrap').style.display = 'block';
+                            document.getElementById('chkCreditCount').textContent = credits;
+                        }
+                    });
+                }
+            });
+        }
+
+        async function submitCheckout(event) {
+            event.preventDefault();
+            const btn = document.getElementById('checkoutBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loader"></span> جاري التحضير...';
+
+            try {
+                const token = await auth.currentUser.getIdToken();
+                const res = await fetch(FUNCTIONS_BASE_URL + '/createPayment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+                    body: JSON.stringify({
+                        courseId: 'section-' + checkoutSection.id,
+                        title: checkoutSection.title,
+                        price: checkoutSection.price || 100,
+                        method: 'paymob',
+                        referralCode: document.getElementById('chkReferralCode').value.trim(),
+                        useRewardCredit: document.getElementById('chkUseCredit').checked,
+                        customer: {
+                            name: document.getElementById('chkName').value.trim(),
+                            email: document.getElementById('chkEmail').value.trim(),
+                            phone: document.getElementById('chkPhone').value.trim()
+                        }
+                    })
+                });
+                const data = await res.json();
+                if (!data.success || !data.iframeUrl) {
+                    throw new Error(data.error || 'تعذّر إنشاء عملية الدفع');
+                }
+                window.location.href = data.iframeUrl;
+            } catch (err) {
+                console.error(err);
+                showToast(err.message || 'تعذّر الاتصال ببوابة الدفع — تأكد من نشر Cloud Functions وضبط مفاتيح Paymob', 'error');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-lock"></i> الدفع الآمن عبر Paymob';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initCheckout);
+    </script>
+</body>
+</html>
