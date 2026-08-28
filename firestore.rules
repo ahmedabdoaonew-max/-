@@ -33,9 +33,10 @@ service cloud.firestore {
 
       allow update: if isSuperAdmin();
 
-      // الإنشاء يتم فقط عبر Cloud Function (onCreate trigger) بصلاحيات admin —
-      // لا نسمح بإنشاء المستند مباشرة من العميل لمنع منح صلاحيات لنفسك عند التسجيل.
-      allow create: if false;
+      // الإنشاء مسموح للمستخدم لنفسه فقط عند التسجيل، وبشرط إن role يكون
+      // 'student' دايماً — يعني محدش يقدر يمنح نفسه صلاحية أدمن وقت التسجيل.
+      allow create: if isSignedIn() && request.auth.uid == uid
+                    && request.resource.data.role == 'student';
       allow delete: if isSuperAdmin();
     }
 
