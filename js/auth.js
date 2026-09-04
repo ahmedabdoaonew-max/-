@@ -213,14 +213,48 @@ function requireAuth(redirect = 'login.html') {
     return true;
 }
 
-function requireAdmin() {
-    const user = getCurrentUser();
-    if (!user || !user.isAdmin) {
-        showToast('غير مصرح لك بالدخول', 'error');
-        window.location.href = 'index.html';
-        return false;
-    }
-    return true;
+// حماية قوية للوحة الأدمن: تتحقق من Firebase Auth + Firestore مباشرة (مش من localStorage)
+async function requireAdmin() {
+    return new Promise((resolve) => {
+        const unsub = auth.onAuthStateChanged(async (fbUser) => {
+            unsub();
+
+            if (!fbUser) {
+                showToast('يجب تسجيل الدخول أولاً', 'error');
+                window.location.href = 'login.html';
+                return resolve(false);
+            }
+
+            try {
+                const doc = await db.collection('users').doc(fbUser.uid).get();
+                if (!doc.exists) {
+                    showToast('غير مصرح لك بالدخول', 'error');
+                    window.location.href = 'index.html';
+                    return resolve(false);
+                }
+
+                const data = doc.data();
+                const isAdmin = data.role === 'super_admin' || data.role === 'admin' || data.isAdmin === true;
+
+                if (!isAdmin) {
+                    showToast('غير مصرح لك بالدخول', 'error');
+                    window.location.href = 'index.html';
+                    return resolve(false);
+                }
+
+                // تحديث الكاش بعد التحقق الحقيقي من السيرفر
+                const profile = _profileFromDoc(fbUser.uid, data);
+                _cacheUser(profile);
+                resolve(true);
+
+            } catch (err) {
+                console.error(err);
+                showToast('حدث خطأ في التحقق من الصلاحيات', 'error');
+                window.location.href = 'index.html';
+                resolve(false);
+            }
+        });
+    });
 }
 
 // ========== نسخة آمنة (async) تتحقق من Firestore مباشرة وليس الكاش ==========
