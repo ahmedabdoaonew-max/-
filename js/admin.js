@@ -3,9 +3,16 @@
    إدارة المحاضرات، المستخدمين، الإحصائيات، المحتوى
    ============================================ */
 
-// ========== حماية لوحة التحكم ==========
-document.addEventListener('DOMContentLoaded', () => {
-    if (!requireAdmin()) return;
+// ========== حماية لوحة التحكم (آمنة) ==========
+document.addEventListener('DOMContentLoaded', async () => {
+    // أخفي اللوحة فوراً لحد ما يتم التحقق من الصلاحيات
+    document.body.style.visibility = 'hidden';
+
+    const allowed = await requireAdmin();
+    if (!allowed) return;
+
+    // إظهار اللوحة بعد التأكد إن المستخدم أدمن فعلاً
+    document.body.style.visibility = 'visible';
 
     // تحديث الإحصائيات
     updateDashboardStats();
