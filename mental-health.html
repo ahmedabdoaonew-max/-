@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B4B8C">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+
+    <title>الصحة النفسية والروحية | الأكاديمية الدولية</title>
+    <meta name="description" content="قسم الصحة النفسية والروحية بالأكاديمية الدولية: القرآن الكريم استماعًا وقراءة، الأذكار، الورد اليومي، مواقيت الصلاة، ومتابعة تقدمك.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="الأكاديمية الدولية">
+    <link rel="canonical" href="https://internationalacademy.vercel.app/mental-health.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="الأكاديمية الدولية">
+    <meta property="og:title" content="الصحة النفسية والروحية | الأكاديمية الدولية">
+    <meta property="og:description" content="القرآن الكريم استماعًا وقراءة، الأذكار، الورد اليومي، ومواقيت الصلاة — في مكان واحد.">
+    <meta property="og:url" content="https://internationalacademy.vercel.app/mental-health.html">
+    <meta property="og:image" content="https://i.postimg.cc/HkDbnFpd/WA-1784067108744.jpg">
+    <meta property="og:locale" content="ar_AR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="الصحة النفسية والروحية | الأكاديمية الدولية">
+    <meta name="twitter:image" content="https://i.postimg.cc/HkDbnFpd/WA-1784067108744.jpg">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- خط "أميري قرآن" للنص القرآني فقط — باقي الصفحة تستخدم نفس خط الموقع (Segoe UI/Tahoma) -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <link rel="stylesheet" href="css/mental-health.css?v=1">
+</head>
+<body>
+    <!-- شاشة الترحيب -->
+    <div class="splash-screen" id="splash">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1 class="splash-title">الأكاديمية الدولية</h1>
+            <p class="splash-subtitle">للتدريب والاستشارات العلمية</p>
+        </div>
+    </div>
+
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الأكاديمية الدولية</span>
+            </a>
+            <a href="login.html" id="headerQuickLogin" class="header-quick-login">تسجيل الدخول</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="courses.html">البرامج التدريبية</a>
+                <a href="lectures.html">المحاضرات</a>
+                <a href="books.html">الكتب التعليمية</a>
+                <a href="certificates.html">الشهادات</a>
+                <a href="mental-health.html" class="active"><i class="fas fa-hands-praying"></i> الصحة النفسية والروحية</a>
+                <a href="about.html">عن الأكاديمية</a>
+                <a href="contact.html">تواصل معنا</a>
+                <a href="admin.html" class="btn-outline" title="لوحة الإدارة" style="border-color:#0E2F5C;">
+                    <i class="fas fa-shield-halved"></i> الإدارة
+                </a>
+                <div id="authButtons" style="display:flex;gap:8px;">
+                    <a href="login.html" class="btn-outline">تسجيل الدخول</a>
+                    <a href="register.html" class="btn-primary">إنشاء حساب</a>
+                </div>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <div class="notif-bell-wrap">
+                        <button type="button" class="notif-bell-btn" id="notifBellBtn" onclick="toggleNotifPanel()">
+                            <i class="fas fa-bell"></i>
+                            <span class="notif-badge" id="notifBadge"></span>
+                        </button>
+                        <div class="notif-panel" id="notifPanel">
+                            <div class="notif-panel-header">الإشعارات</div>
+                            <div id="notifList"></div>
+                        </div>
+                    </div>
+                    <a href="profile.html"><i class="fas fa-user-circle"></i> <span class="user-name"></span></a>
+                    <a href="admin.html" id="adminNavLink" style="display:none;" class="btn-primary"><i class="fas fa-cog"></i> لوحة التحكم</a>
+                    <button onclick="logout()" class="btn-outline" style="padding:6px 14px;">خروج</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الأزرار العائمة -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/201116677208" target="_blank" class="float-btn float-whatsapp" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@d..mohammed.qootp?_r=1&amp;_t=ZS-99FMfhyGpXc" target="_blank" class="float-btn float-tiktok" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/share/1Ez1SXMvMR/" target="_blank" class="float-btn float-facebook" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <!-- بانر الصفحة -->
+    <section class="page-hero" id="hero">
+        <h1><i class="fas fa-hands-praying"></i> الصحة النفسية والروحية</h1>
+        <p>مساحة يومية للسكينة: القرآن الكريم استماعًا وقراءة، الأذكار، الورد اليومي، مواقيت الصلاة، ومتابعة هادئة لتقدمك.</p>
+    </section>
+    <div class="breadcrumb"><a href="index.html">الرئيسية</a> ← الصحة النفسية والروحية</div>
+
+    <main class="mh-wrap">
+
+        <!-- شبكة الأقسام (نفس شكل شبكة الأقسام الأخرى في الموقع) -->
+        <section id="sections-grid">
+        <div class="sections-grid">
+            <div class="section-card" data-section="quran">
+                <div class="section-img"><i class="fas fa-book-quran"></i></div>
+                <div class="section-body">
+                    <h3>القرآن الكريم</h3>
+                    <p>استماع أو قراءة، مع حفظ موضعك تلقائيًا</p>
+                </div>
+            </div>
+            <div class="section-card" data-section="athkar">
+                <div class="section-img"><i class="fas fa-hand-holding-heart"></i></div>
+                <div class="section-body">
+                    <h3>الأذكار</h3>
+                    <p>أذكار الصباح والمساء وبعد الصلاة</p>
+                </div>
+            </div>
+            <div class="section-card" data-section="tasks">
+                <div class="section-img"><i class="fas fa-list-check"></i></div>
+                <div class="section-body">
+                    <h3>الورد اليومي</h3>
+                    <p>مهامك الروحية اليومية بنقاط تحفيزية</p>
+                </div>
+            </div>
+            <div class="section-card" data-section="prayer">
+                <div class="section-img"><i class="fas fa-mosque"></i></div>
+                <div class="section-body">
+                    <h3>مواقيت الصلاة</h3>
+                    <p>تنبيه بالأذان حسب مدينتك</p>
+                </div>
+            </div>
+            <div class="section-card" data-section="progress">
+                <div class="section-img"><i class="fas fa-chart-line"></i></div>
+                <div class="section-body">
+                    <h3>تقدمك</h3>
+                    <p>نظرة عامة على نشاطك ونقاطك</p>
+                </div>
+            </div>
+            <div class="section-card" data-section="achievements">
+                <div class="section-img"><i class="fas fa-trophy"></i></div>
+                <div class="section-body">
+                    <h3>الإنجازات</h3>
+                    <p>أوسمة تُفتح مع الاستمرار</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;margin:26px 0 40px;">
+            <button type="button" id="start-wird-btn" class="btn-primary" style="padding:14px 30px;border-radius:30px;border:none;cursor:pointer;">
+                ابدأ وردك اليوم
+            </button>
+        </div>
+        </section>
+
+        <!-- ============ لوحة القرآن الكريم ============ -->
+        <section class="mh-panel" id="panel-quran" hidden>
+            <div class="mh-panel-head">
+                <h2><i class="fas fa-book-quran"></i> القرآن الكريم</h2>
+                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+            </div>
+
+            <div id="last-position" class="mh-last-position">آخر موضع: لم تبدأ بعد</div>
+            <div class="mh-goal-row">
+                <span>الهدف اليومي:</span>
+                <select id="quran-goal">
+                    <option value="1">صفحة واحدة</option>
+                    <option value="2">صفحتان</option>
+                    <option value="5">5 صفحات</option>
+                    <option value="10">10 صفحات</option>
+                </select>
+                <span id="goal-progress">0 / 1 صفحة</span>
+                <button type="button" id="continue-reading-btn" class="btn-primary" style="border:none;border-radius:20px;padding:8px 18px;cursor:pointer;">متابعة القراءة</button>
+            </div>
+
+            <div id="surah-list" class="mh-surah-list"></div>
+
+            <!-- عارض مبسّط (احتياطي) -->
+            <div id="ayah-viewer" class="mh-ayah-viewer" hidden>
+                <div id="current-surah-name"></div>
+                <div id="ayah-text"></div>
+                <span id="ayah-number"></span>
+                <div class="mh-ayah-nav">
+                    <button type="button" id="prev-ayah" class="btn-outline">◀ السابقة</button>
+                    <button type="button" id="next-ayah" class="btn-outline">التالية ▶</button>
+                    <button type="button" id="play-quran-audio" class="btn-primary" style="border:none;border-radius:20px;">🔊 تشغيل تلاوة السورة كاملة</button>
+                    <button type="button" id="open-quran-fullscreen" class="btn-outline">فتح صفحة القراءة</button>
+                    <button type="button" id="save-position-btn" class="btn-outline">💾 حفظ الموضع</button>
+                    <button type="button" id="mark-page-btn" class="btn-outline">تمّ قراءة صفحة (+5)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ لوحة الأذكار ============ -->
+        <section class="mh-panel" id="panel-athkar" hidden>
+            <div class="mh-panel-head">
+                <h2><i class="fas fa-hand-holding-heart"></i> الأذكار</h2>
+                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+            </div>
+            <div class="athkar-cats">
+                <button type="button" class="athkar-cat" data-cat="morning">أذكار الصباح</button>
+                <button type="button" class="athkar-cat" data-cat="evening">أذكار المساء</button>
+                <button type="button" class="athkar-cat" data-cat="after-prayer">بعد الصلاة</button>
+                <button type="button" class="athkar-cat" data-cat="sleep">النوم</button>
+                <button type="button" class="athkar-cat" data-cat="wake">الاستيقاظ</button>
+                <button type="button" class="athkar-cat" data-cat="food">الطعام</button>
+                <button type="button" class="athkar-cat" data-cat="home">المنزل والخلاء</button>
+                <button type="button" class="athkar-cat" data-cat="general">أذكار عامة</button>
+                <button type="button" class="athkar-cat" data-cat="duas">أدعية مأثورة</button>
+            </div>
+            <div id="group-progress" class="mh-group-progress"></div>
+            <div id="athkar-list"></div>
+            <button type="button" id="complete-group-btn" class="btn-primary" style="border:none;border-radius:20px;padding:10px 20px;margin-top:10px;" hidden>✔ إنهاء هذه المجموعة</button>
+        </section>
+
+        <!-- ============ لوحة الورد اليومي ============ -->
+        <section class="mh-panel" id="panel-tasks" hidden>
+            <div class="mh-panel-head">
+                <h2><i class="fas fa-list-check"></i> الورد اليومي</h2>
+                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+            </div>
+            <div id="tasks-progress-bar-track" class="mh-progress-track"><div id="tasks-progress-bar" class="mh-progress-fill"></div></div>
+            <div id="tasks-progress-text" class="mh-muted"></div>
+            <ul id="tasks-list" class="mh-tasks-list"></ul>
+        </section>
+
+        <!-- ============ لوحة مواقيت الصلاة ============ -->
+        <section class="mh-panel" id="panel-prayer" hidden>
+            <div class="mh-panel-head">
+                <h2><i class="fas fa-mosque"></i> مواقيت الصلاة</h2>
+                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+            </div>
+
+            <div class="mh-next-prayer">
+                <div>الصلاة القادمة: <strong id="next-prayer-name">—</strong></div>
+                <div id="countdown">00:00:00</div>
+            </div>
+            <div id="prayer-times" class="mh-prayer-times"></div>
+
+            <div class="mh-settings-card">
+                <div class="form-group">
+                    <label for="city-input">المدينة</label>
+                    <input type="text" id="city-input" placeholder="مثال: القاهرة">
+                </div>
+                <div class="form-group">
+                    <label for="country-input">الدولة</label>
+                    <input type="text" id="country-input" placeholder="مثال: مصر">
+                </div>
+                <div class="form-group">
+                    <label for="calc-method">طريقة الحساب</label>
+                    <select id="calc-method">
+                        <option value="4">أم القرى (مكة المكرمة)</option>
+                        <option value="5">الهيئة المصرية العامة للمساحة</option>
+                        <option value="3">رابطة العالم الإسلامي</option>
+                        <option value="2">الجمعية الإسلامية لأمريكا الشمالية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="adhan-reciter">صوت الأذان</label>
+                    <select id="adhan-reciter">
+                        <option value="https://cdn.aladhan.com/media/audio/adhan/adhan_makkah.mp3">أذان الحرم المكي</option>
+                        <option value="https://cdn.aladhan.com/media/audio/adhan/adhan1.mp3">أذان عبد الباسط</option>
+                    </select>
+                </div>
+                <div class="mh-check-row">
+                    <input type="checkbox" id="adhan-enabled">
+                    <label for="adhan-enabled">تفعيل صوت الأذان</label>
+                </div>
+                <div class="mh-check-row">
+                    <input type="checkbox" id="adhan-fullscreen-enabled">
+                    <label for="adhan-fullscreen-enabled">شاشة الأذان بملء الشاشة</label>
+                </div>
+                <div class="mh-check-row">
+                    <input type="checkbox" id="notif-enabled">
+                    <label for="notif-enabled">تنبيهات المتصفح</label>
+                </div>
+                <button type="button" id="save-prayer-settings" class="btn-primary" style="border:none;border-radius:20px;padding:10px 22px;margin-top:14px;cursor:pointer;">حفظ الإعدادات</button>
+            </div>
+        </section>
+
+        <!-- ============ لوحة التقدم ============ -->
+        <section class="mh-panel" id="panel-progress" hidden>
+            <div class="mh-panel-head">
+                <h2><i class="fas fa-chart-line"></i> تقدمك</h2>
+                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+            </div>
+            <div class="mh-stats-grid">
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-points">0</span><span class="mh-stat-label">النقاط</span></div>
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-streak">0</span><span class="mh-stat-label">سلسلة الأيام</span></div>
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-longest">0</span><span class="mh-stat-label">أطول سلسلة</span></div>
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-tasks">0</span><span class="mh-stat-label">مهام اليوم</span></div>
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-athkar">0</span><span class="mh-stat-label">أذكار اليوم</span></div>
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-achievements">0</span><span class="mh-stat-label">الإنجازات</span></div>
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-quran" style="font-size:1rem;">—</span><span class="mh-stat-label">آخر موضع بالقرآن</span></div>
+                <div class="mh-stat-box"><span class="mh-stat-value" id="stat-next-prayer" style="font-size:1rem;">—</span><span class="mh-stat-label">الصلاة القادمة</span></div>
+            </div>
+        </section>
+
+        <!-- ============ لوحة الإنجازات ============ -->
+        <section class="mh-panel" id="panel-achievements" hidden>
+            <div class="mh-panel-head">
+                <h2><i class="fas fa-trophy"></i> الإنجازات</h2>
+                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+            </div>
+            <div class="mh-achievements-grid" id="achievements-grid"></div>
+        </section>
+
+    </main>
+
+    <!-- ============ نافذة: استماع أم قراءة؟ ============ -->
+    <div id="quranChoiceModal" class="mh-modal-overlay" hidden>
+        <div class="mh-choice-card">
+            <h3 id="quranChoiceSurahName">سورة —</h3>
+            <div class="mh-muted" id="quranChoiceSurahMeta"></div>
+            <div class="form-group" style="text-align:right;">
+                <label for="quran-reciter-select">اختر القارئ</label>
+                <select id="quran-reciter-select">
+                    <option value="ar.alafasy">مشاري راشد العفاسي</option>
+                    <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد (مرتّل)</option>
+                    <option value="ar.husary">محمود خليل الحصري</option>
+                    <option value="ar.minshawi">محمد صديق المنشاوي</option>
+                    <option value="ar.abdurrahmaansudais">عبد الرحمن السديس</option>
+                    <option value="ar.mahermuaiqly">ماهر المعيقلي</option>
+                </select>
+            </div>
+            <div class="mh-choice-actions">
+                <button type="button" id="quranChoiceListenBtn"><i class="fas fa-headphones"></i> استماع</button>
+                <button type="button" id="quranChoiceReadBtn"><i class="fas fa-book-open"></i> قراءة</button>
+            </div>
+            <button type="button" id="quranChoiceCloseBtn" class="mh-link-btn">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- ============ شاشة القراءة/الاستماع بملء الشاشة ============ -->
+    <div id="quranFullscreenReader" class="mh-fs-reader" hidden>
+        <div class="mh-fs-toolbar">
+            <span id="quranFsSurahName">سورة —</span>
+            <div class="mh-fs-controls">
+                <button type="button" id="quranFsListenBtn">🔊</button>
+                <button type="button" id="quranFsSaveExitBtn" class="mh-fs-save"><i class="fas fa-floppy-disk"></i> حفظ وخروج</button>
+                <button type="button" id="quranFsExitBtn"><i class="fas fa-xmark"></i> خروج</button>
+            </div>
+        </div>
+        <div id="quranFsBody" class="mh-fs-body"></div>
+        <div class="mh-fs-nav">
+            <button type="button" id="quranFsPrevBtn">▶ السورة السابقة</button>
+            <button type="button" id="quranFsNextBtn">السورة التالية ◀</button>
+        </div>
+    </div>
+
+    <!-- ============ شاشة الأذان ============ -->
+    <div id="adhanFullscreen" class="mh-adhan-fs" hidden>
+        <div id="adhanFsPrayerName">صلاة —</div>
+        <div id="adhanFsLines"></div>
+        <button type="button" id="adhanFsClose" class="btn-outline" style="border-color:rgba(255,255,255,.4);color:#fff;">إغلاق</button>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <audio id="quran-audio" preload="none"></audio>
+    <audio id="adhan-audio" preload="none"></audio>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="footer-inner" style="text-align:center;">
+            <div>
+                <h4>الأكاديمية الدولية</h4>
+                <p style="opacity:0.85;font-size:0.95rem;line-height:1.7;max-width:480px;margin:0 auto;">منصة متخصصة في التدريب والاستشارات العلمية، تقدم برامج تدريبية عالية الجودة بإشراف متخصصين.</p>
+                <a href="about.html" class="btn-outline" style="display:inline-block;margin-top:14px;border-color:rgba(255,255,255,0.4);color:white;">عن الأكاديمية والروابط الكاملة ←</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 الأكاديمية الدولية للتدريب والاستشارات العلمية. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <!-- Firebase (Auth + Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js?v=6"></script>
+    <script src="js/auth.js?v=6"></script>
+    <script src="js/notifications.js?v=1"></script>
+    <script src="js/religious.js"></script>
+</body>
+</html>
