@@ -15,6 +15,7 @@ const APP_SHELL = [
 
     /* ====== قسم "الصحة النفسية والروحية" (أضيف بتاريخ اليوم) ====== */
     '/mental-health.html',
+    '/carrot-dash.html',
     '/css/mental-health.css',
     '/js/religious.js',
     '/data/quran/index.json',
