@@ -155,7 +155,7 @@
             </div>
         </div>
         <div style="text-align:center;margin:26px 0 40px;">
-            <button type="button" id="start-wird-btn" class="btn-primary" style="padding:14px 30px;border-radius:30px;border:none;cursor:pointer;">
+            <button type="button" id="start-wird-btn" class="mh-btn-gold" style="padding:14px 30px;font-size:1rem;">
                 ابدأ وردك اليوم
             </button>
         </div>
@@ -165,7 +165,7 @@
         <section class="mh-panel" id="panel-quran" hidden>
             <div class="mh-panel-head">
                 <h2><i class="fas fa-book-quran"></i> القرآن الكريم</h2>
-                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+                <button type="button" class="mh-btn-glass" data-back>→ رجوع للأقسام</button>
             </div>
 
             <div id="last-position" class="mh-last-position">آخر موضع: لم تبدأ بعد</div>
@@ -178,7 +178,7 @@
                     <option value="10">10 صفحات</option>
                 </select>
                 <span id="goal-progress">0 / 1 صفحة</span>
-                <button type="button" id="continue-reading-btn" class="btn-primary" style="border:none;border-radius:20px;padding:8px 18px;cursor:pointer;">متابعة القراءة</button>
+                <button type="button" id="continue-reading-btn" class="mh-btn-gold">متابعة القراءة</button>
             </div>
 
             <div id="surah-list" class="mh-surah-list"></div>
@@ -189,12 +189,12 @@
                 <div id="ayah-text"></div>
                 <span id="ayah-number"></span>
                 <div class="mh-ayah-nav">
-                    <button type="button" id="prev-ayah" class="btn-outline">◀ السابقة</button>
-                    <button type="button" id="next-ayah" class="btn-outline">التالية ▶</button>
-                    <button type="button" id="play-quran-audio" class="btn-primary" style="border:none;border-radius:20px;">🔊 تشغيل تلاوة السورة كاملة</button>
-                    <button type="button" id="open-quran-fullscreen" class="btn-outline">فتح صفحة القراءة</button>
-                    <button type="button" id="save-position-btn" class="btn-outline">💾 حفظ الموضع</button>
-                    <button type="button" id="mark-page-btn" class="btn-outline">تمّ قراءة صفحة (+5)</button>
+                    <button type="button" id="prev-ayah" class="mh-btn-glass">◀ السابقة</button>
+                    <button type="button" id="next-ayah" class="mh-btn-glass">التالية ▶</button>
+                    <button type="button" id="play-quran-audio" class="mh-btn-gold">🔊 تشغيل تلاوة السورة كاملة</button>
+                    <button type="button" id="open-quran-fullscreen" class="mh-btn-glass">فتح صفحة القراءة</button>
+                    <button type="button" id="save-position-btn" class="mh-btn-green">💾 حفظ الموضع</button>
+                    <button type="button" id="mark-page-btn" class="mh-btn-green">تمّ قراءة صفحة (+5)</button>
                 </div>
             </div>
         </section>
@@ -203,7 +203,7 @@
         <section class="mh-panel" id="panel-athkar" hidden>
             <div class="mh-panel-head">
                 <h2><i class="fas fa-hand-holding-heart"></i> الأذكار</h2>
-                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+                <button type="button" class="mh-btn-glass" data-back>→ رجوع للأقسام</button>
             </div>
             <div class="athkar-cats">
                 <button type="button" class="athkar-cat" data-cat="morning">أذكار الصباح</button>
@@ -218,14 +218,14 @@
             </div>
             <div id="group-progress" class="mh-group-progress"></div>
             <div id="athkar-list"></div>
-            <button type="button" id="complete-group-btn" class="btn-primary" style="border:none;border-radius:20px;padding:10px 20px;margin-top:10px;" hidden>✔ إنهاء هذه المجموعة</button>
+            <button type="button" id="complete-group-btn" class="mh-btn-green" style="margin-top:10px;" hidden>✔ إنهاء هذه المجموعة</button>
         </section>
 
         <!-- ============ لوحة الورد اليومي ============ -->
         <section class="mh-panel" id="panel-tasks" hidden>
             <div class="mh-panel-head">
                 <h2><i class="fas fa-list-check"></i> الورد اليومي</h2>
-                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+                <button type="button" class="mh-btn-glass" data-back>→ رجوع للأقسام</button>
             </div>
             <div id="tasks-progress-bar-track" class="mh-progress-track"><div id="tasks-progress-bar" class="mh-progress-fill"></div></div>
             <div id="tasks-progress-text" class="mh-muted"></div>
@@ -236,7 +236,7 @@
         <section class="mh-panel" id="panel-prayer" hidden>
             <div class="mh-panel-head">
                 <h2><i class="fas fa-mosque"></i> مواقيت الصلاة</h2>
-                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+                <button type="button" class="mh-btn-glass" data-back>→ رجوع للأقسام</button>
             </div>
 
             <div class="mh-next-prayer">
@@ -282,7 +282,7 @@
                     <input type="checkbox" id="notif-enabled">
                     <label for="notif-enabled">تنبيهات المتصفح</label>
                 </div>
-                <button type="button" id="save-prayer-settings" class="btn-primary" style="border:none;border-radius:20px;padding:10px 22px;margin-top:14px;cursor:pointer;">حفظ الإعدادات</button>
+                <button type="button" id="save-prayer-settings" class="mh-btn-gold" style="margin-top:14px;">حفظ الإعدادات</button>
             </div>
         </section>
 
@@ -290,7 +290,7 @@
         <section class="mh-panel" id="panel-progress" hidden>
             <div class="mh-panel-head">
                 <h2><i class="fas fa-chart-line"></i> تقدمك</h2>
-                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+                <button type="button" class="mh-btn-glass" data-back>→ رجوع للأقسام</button>
             </div>
             <div class="mh-stats-grid">
                 <div class="mh-stat-box"><span class="mh-stat-value" id="stat-points">0</span><span class="mh-stat-label">النقاط</span></div>
@@ -308,7 +308,7 @@
         <section class="mh-panel" id="panel-achievements" hidden>
             <div class="mh-panel-head">
                 <h2><i class="fas fa-trophy"></i> الإنجازات</h2>
-                <button type="button" class="btn-outline" data-back>→ رجوع للأقسام</button>
+                <button type="button" class="mh-btn-glass" data-back>→ رجوع للأقسام</button>
             </div>
             <div class="mh-achievements-grid" id="achievements-grid"></div>
         </section>
