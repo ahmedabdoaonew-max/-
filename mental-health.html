@@ -37,6 +37,18 @@
     <link rel="stylesheet" href="css/mental-health.css?v=1">
 </head>
 <body>
+    <!-- تظهر شاشة الترحيب مرة واحدة فقط لكل جلسة تصفح (مش مع كل صفحة تفتحها) -->
+    <script>
+    (function(){
+        try{
+            if (sessionStorage.getItem('iaSplashShown')) {
+                document.write('<style>#splash{display:none!important}</style>');
+            } else {
+                sessionStorage.setItem('iaSplashShown','1');
+            }
+        }catch(e){}
+    })();
+    </script>
     <!-- شاشة الترحيب -->
     <div class="splash-screen" id="splash">
         <div class="splash-content">
@@ -151,6 +163,13 @@
                 <div class="section-body">
                     <h3>الإنجازات</h3>
                     <p>أوسمة تُفتح مع الاستمرار</p>
+                </div>
+            </div>
+            <div class="section-card" data-href="carrot-dash.html" data-target="_blank">
+                <div class="section-img"><i class="fas fa-gamepad"></i></div>
+                <div class="section-body">
+                    <h3>سلّي نفسك</h3>
+                    <p>استراحة قصيرة ولعبة خفيفة لتجديد نشاطك</p>
                 </div>
             </div>
         </div>
