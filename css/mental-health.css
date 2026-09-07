@@ -12,6 +12,12 @@
   --mh-green-soft:#E7F3EC;
 }
 
+/* ⚠️ إصلاح مهم: العناصر المنبثقة (نافذة الاختيار / شاشة القراءة / شاشة الأذان)
+   بتستخدم خاصية hidden لإخفائها، لكن قواعد display:flex بتاعتها كانت بتلغي
+   تأثير hidden فتظهر دايمًا فوق الصفحة كلها حتى لو محدش ضغط عليها.
+   هذا السطر يضمن إن أي عنصر عليه hidden يختفي فعليًا مهما كانت باقي القواعد. */
+[hidden]{ display:none !important; }
+
 .mh-wrap{ max-width:1000px; margin:0 auto; padding:0 20px 60px; }
 
 /* البانر يستخدم كلاس page-hero الموجود بالفعل في style.css — بدون أي إضافة هنا */
@@ -223,6 +229,11 @@
 }
 .adhan-fs-line{ opacity:.3; font-size:1.3rem; margin:6px 0; transition:opacity .4s ease; }
 .adhan-fs-line.active{ opacity:1; color:var(--gold); }
+.mh-adhan-close{
+  margin-top:20px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4);
+  color:#fff; padding:9px 22px; border-radius:20px; cursor:pointer; font-family:inherit; font-size:.95rem;
+}
+.mh-adhan-close:hover{ background:rgba(255,255,255,.28); }
 
 @media (max-width:560px){
   #ayah-text{ font-size:1.35rem; }
