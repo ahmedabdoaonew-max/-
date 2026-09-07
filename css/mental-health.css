@@ -1,26 +1,52 @@
 /* ============================================================
    الصحة النفسية والروحية — mental-health.css
-   لا يُعيد تعريف أي متغير أو كلاس من style.css، فقط يستخدم نفس
-   المتغيرات الموجودة فعليًا (--primary-blue, --gold, --shadow...)
-   ويضيف فقط ما هو غير موجود: عارض القرآن، الأذكار، المهام،
-   الصلاة، التقدم، الإنجازات، ونافذة "استماع أم قراءة".
+   تصميم "زجاجي" شفاف يتماشى مع خلفية الفضاء/النجوم الموجودة أصلاً
+   في style.css، بحيث يبدو القسم وكأنه تجربة قائمة بذاتها داخل الموقع.
    ============================================================ */
 
 :root{
-  /* لون وظيفي واحد فقط جديد: أخضر هادئ لتمييز "تمّت قراءته/الاستماع له" */
-  --mh-green:#2F7D5A;
-  --mh-green-soft:#E7F3EC;
+  /* ألوان زجاجية داكنة (مرايا شفافة) + نص فاتح يناسب خلفية الفضاء */
+  --mh-glass:      rgba(16, 28, 52, 0.42);
+  --mh-glass-2:    rgba(16, 28, 52, 0.6);
+  --mh-glass-soft: rgba(255, 255, 255, 0.06);
+  --mh-border:     rgba(255, 255, 255, 0.16);
+  --mh-border-2:   rgba(255, 255, 255, 0.28);
+  --mh-blur:       blur(16px);
+  --mh-text:       #F3F6FC;
+  --mh-text-dim:   #ADBAD0;
+  --mh-green:      #34D399;
+  --mh-green-soft: rgba(52, 211, 153, 0.16);
+  --mh-shadow:     0 10px 34px rgba(0,0,0,.35);
 }
 
-/* ⚠️ إصلاح مهم: العناصر المنبثقة (نافذة الاختيار / شاشة القراءة / شاشة الأذان)
-   بتستخدم خاصية hidden لإخفائها، لكن قواعد display:flex بتاعتها كانت بتلغي
-   تأثير hidden فتظهر دايمًا فوق الصفحة كلها حتى لو محدش ضغط عليها.
-   هذا السطر يضمن إن أي عنصر عليه hidden يختفي فعليًا مهما كانت باقي القواعد. */
+/* ⚠️ إصلاح: عناصر hidden كانت بتفضل ظاهرة بسبب display:flex في قواعد تانية */
 [hidden]{ display:none !important; }
 
-.mh-wrap{ max-width:1000px; margin:0 auto; padding:0 20px 60px; }
+/* ⚠️ إصلاح: كل بطاقات هذا القسم كانت تظهر ثم تختفي (opacity:0) لأن نظام
+   "الظهور عند التمرير" العام في الموقع (.section-card / .revealed) لم يكن
+   يعمل على هذه الصفحة تحديدًا. نجعلها ظاهرة دائمًا بغض النظر عن ذلك. */
+#sections-grid .section-card{ opacity:1 !important; transform:none !important; }
 
-/* البانر يستخدم كلاس page-hero الموجود بالفعل في style.css — بدون أي إضافة هنا */
+.mh-wrap{ max-width:1000px; margin:0 auto; padding:0 20px 70px; }
+
+/* ---------- بطاقات الأقسام الست (زجاج شفاف فوق خلفية الفضاء) ---------- */
+#sections-grid .section-card{
+  background:var(--mh-glass) !important;
+  -webkit-backdrop-filter:var(--mh-blur);
+  backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border) !important;
+  box-shadow:var(--mh-shadow) !important;
+}
+#sections-grid .section-card:hover{
+  border-color:var(--mh-border-2) !important;
+  box-shadow:0 16px 44px rgba(0,0,0,.45), 0 0 0 1px rgba(201,162,39,.25) !important;
+}
+#sections-grid .section-card .section-img{
+  background:linear-gradient(135deg, rgba(201,162,39,.25), rgba(27,75,140,.35));
+  color:var(--gold);
+}
+#sections-grid .section-card .section-body h3{ color:var(--mh-text); }
+#sections-grid .section-card .section-body p{ color:var(--mh-text-dim); }
 
 /* ---------- لوحات الأقسام ---------- */
 .mh-panel{ padding-top:10px; }
@@ -28,42 +54,74 @@
   display:flex; align-items:center; justify-content:space-between;
   margin-bottom:18px; gap:10px; flex-wrap:wrap;
 }
-.mh-panel-head h2{ margin:0; color:var(--primary-dark); font-size:1.4rem; display:flex; align-items:center; gap:10px; }
+.mh-panel-head h2{ margin:0; color:var(--mh-text); font-size:1.4rem; display:flex; align-items:center; gap:10px; text-shadow:0 2px 10px rgba(0,0,0,.4); }
 .mh-panel-head h2 i{ color:var(--gold); }
-.mh-muted{ color:var(--text-muted); font-size:.9rem; }
+.mh-muted{ color:var(--mh-text-dim); font-size:.9rem; }
+
+/* ---------- أزرار موحّدة بشكل "زجاجي/فضائي" (تحسين شكل الأزرار) ---------- */
+.mh-btn-glass, .mh-btn-gold, .mh-btn-green, .done-btn{
+  font-family:inherit; cursor:pointer; border-radius:24px; font-size:.9rem;
+  padding:10px 20px; transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  display:inline-flex; align-items:center; gap:8px; justify-content:center;
+}
+.mh-btn-glass{
+  background:rgba(255,255,255,.08); border:1px solid var(--mh-border-2); color:var(--mh-text);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+}
+.mh-btn-glass:hover{ background:rgba(255,255,255,.16); border-color:var(--gold); }
+.mh-btn-gold{
+  background:linear-gradient(135deg, var(--gold), #8a6c1e); color:#211803; border:none; font-weight:700;
+  box-shadow:0 6px 22px rgba(201,162,39,.35), inset 0 0 0 1px rgba(255,255,255,.12);
+}
+.mh-btn-gold:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(201,162,39,.5); }
+.mh-btn-green, .done-btn{
+  background:linear-gradient(135deg, var(--mh-green), #1f9d76); color:#062018; border:none; font-weight:700;
+  box-shadow:0 6px 20px rgba(52,211,153,.3);
+}
+.mh-btn-green:hover, .done-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(52,211,153,.45); }
+.mh-btn-glass:disabled, .mh-btn-green:disabled, .mh-btn-gold:disabled{ opacity:.4; cursor:not-allowed; transform:none; }
 
 /* ---------- قائمة السور ---------- */
 .mh-last-position{
-  background:var(--beige-soft);
+  background:var(--mh-glass-soft);
   border:1px dashed var(--gold);
-  color:var(--primary-dark);
+  color:var(--mh-text);
   padding:10px 14px;
   border-radius:var(--radius-sm);
   margin-bottom:8px;
   font-size:.92rem;
 }
-.mh-goal-row{ display:flex; align-items:center; gap:10px; margin:10px 0 18px; font-size:.9rem; color:var(--text-muted); flex-wrap:wrap; }
-.mh-goal-row select{ padding:6px 10px; border-radius:8px; border:2px solid #e0e0e0; }
+.mh-goal-row{ display:flex; align-items:center; gap:10px; margin:10px 0 18px; font-size:.9rem; color:var(--mh-text-dim); flex-wrap:wrap; }
+.mh-goal-row select{
+  padding:6px 10px; border-radius:8px; border:1px solid var(--mh-border-2);
+  background:var(--mh-glass-2); color:var(--mh-text);
+}
+.mh-goal-row select option{ color:#111; }
 
 .mh-surah-list{
-  background:var(--white);
+  background:var(--mh-glass);
+  -webkit-backdrop-filter:var(--mh-blur);
+  backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border);
   border-radius:var(--radius);
-  box-shadow:var(--shadow);
+  box-shadow:var(--mh-shadow);
   overflow:hidden;
+  max-height:70vh;
+  overflow-y:auto;
 }
 .surah-item{
   width:100%;
   display:flex; align-items:center; justify-content:space-between;
-  background:none; border:none; border-bottom:1px solid #eee;
+  background:none; border:none; border-bottom:1px solid rgba(255,255,255,.08);
   padding:14px 18px; cursor:pointer; text-align:right;
-  font-family:inherit; color:var(--text-dark);
+  font-family:inherit; color:var(--mh-text);
   border-right:3px solid transparent;
-  transition:var(--transition);
+  transition:background .2s ease;
 }
 .surah-item:last-child{ border-bottom:none; }
-.surah-item:hover{ background:var(--beige-light); }
-.surah-name{ font-weight:700; color:var(--primary-dark); }
-.surah-meta{ color:var(--text-muted); font-size:.84rem; }
+.surah-item:hover{ background:rgba(255,255,255,.06); }
+.surah-name{ font-weight:700; color:var(--mh-text); }
+.surah-meta{ color:var(--mh-text-dim); font-size:.84rem; }
 .surah-item.surah-started{ border-right-color:var(--gold); }
 .surah-item.surah-done{
   border-right-color:var(--mh-green);
@@ -74,72 +132,81 @@
   color:var(--mh-green);
   font-weight:800;
 }
-.empty-state{ padding:26px; text-align:center; color:var(--text-muted); }
+.empty-state{ padding:26px; text-align:center; color:var(--mh-text-dim); }
 
 /* ---------- عارض الآيات المضمّن (احتياطي) ---------- */
 .mh-ayah-viewer{
-  background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow);
+  background:var(--mh-glass); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border); border-radius:var(--radius); box-shadow:var(--mh-shadow);
   padding:24px; text-align:center; margin-top:16px;
 }
-#current-surah-name{ color:var(--primary-dark); font-weight:700; margin-bottom:14px; font-size:1.1rem; }
+#current-surah-name{ color:var(--mh-text); font-weight:700; margin-bottom:14px; font-size:1.1rem; }
 #ayah-text{
   font-family:"Amiri Quran","Amiri",serif;
-  font-size:1.7rem; line-height:2.3; color:var(--text-dark); margin-bottom:10px;
+  font-size:1.7rem; line-height:2.3; color:var(--mh-text); margin-bottom:10px;
 }
 #ayah-number{ color:var(--gold); font-size:.9rem; margin-bottom:16px; display:block; }
 .mh-ayah-nav{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:14px; }
 
 /* ---------- نافذة "استماع أم قراءة" ---------- */
 .mh-modal-overlay{
-  position:fixed; inset:0; background:rgba(14,47,92,.55);
+  position:fixed; inset:0; background:rgba(4,10,22,.65);
+  -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
   display:flex; align-items:center; justify-content:center;
   z-index:2100; padding:20px;
 }
 .mh-choice-card{
-  background:var(--white); border-radius:var(--radius); padding:28px 24px;
-  max-width:380px; width:100%; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,.25);
+  background:var(--mh-glass-2); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border-2);
+  border-radius:var(--radius); padding:28px 24px;
+  max-width:380px; width:100%; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.5);
 }
-.mh-choice-card h3{ margin:0 0 2px; color:var(--primary-dark); }
+.mh-choice-card h3{ margin:0 0 2px; color:var(--mh-text); }
 .mh-choice-actions{ display:flex; gap:10px; margin:18px 0 16px; }
 .mh-choice-actions button{
-  flex:1; padding:18px 8px; border-radius:var(--radius-sm); border:2px solid #e0e0e0;
-  background:var(--beige-light); cursor:pointer; font-size:.95rem; font-weight:700;
-  display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--primary-dark);
-  transition:var(--transition);
+  flex:1; padding:18px 8px; border-radius:var(--radius-sm); border:1px solid var(--mh-border-2);
+  background:rgba(255,255,255,.06); cursor:pointer; font-size:.95rem; font-weight:700;
+  display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--mh-text);
+  transition:.2s;
 }
 .mh-choice-actions button i{ font-size:1.5rem; }
-#quranChoiceListenBtn{ border-color:var(--primary-blue); }
-#quranChoiceListenBtn:hover{ background:var(--primary-light); }
+#quranChoiceListenBtn{ border-color:var(--primary-light); }
+#quranChoiceListenBtn:hover{ background:rgba(46,107,184,.25); }
 #quranChoiceReadBtn{ border-color:var(--gold); }
-#quranChoiceReadBtn:hover{ background:var(--beige-soft); }
-.mh-link-btn{ background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:.85rem; text-decoration:underline; }
+#quranChoiceReadBtn:hover{ background:rgba(201,162,39,.18); }
+.mh-link-btn{ background:none; border:none; color:var(--mh-text-dim); cursor:pointer; font-size:.85rem; text-decoration:underline; }
 
 /* ---------- شاشة القراءة/الاستماع بملء الشاشة ---------- */
 .mh-fs-reader{
-  position:fixed; inset:0; background:var(--beige-light); z-index:2200;
+  position:fixed; inset:0; z-index:2200;
   display:flex; flex-direction:column;
+  background:
+    radial-gradient(650px 480px at 10% 0%, rgba(27,75,140,.35), transparent 60%),
+    radial-gradient(600px 500px at 95% 100%, rgba(201,162,39,.2), transparent 60%),
+    linear-gradient(160deg, #0a1730, #182a4a 60%, #3d5878);
 }
 .mh-fs-toolbar{
-  background:var(--primary-dark); color:#fff;
+  background:rgba(6,14,30,.65); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  color:#fff; border-bottom:1px solid var(--mh-border);
   display:flex; align-items:center; justify-content:space-between;
   padding:12px 16px; gap:10px; flex-wrap:wrap;
 }
 .mh-fs-toolbar #quranFsSurahName{ font-weight:700; }
 .mh-fs-controls{ display:flex; gap:8px; align-items:center; }
 .mh-fs-controls button{
-  background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28); color:#fff;
+  background:rgba(255,255,255,.1); border:1px solid var(--mh-border-2); color:#fff;
   padding:9px 14px; border-radius:20px; cursor:pointer; font-size:.9rem;
 }
-.mh-fs-controls button:hover{ background:rgba(255,255,255,.24); }
-.mh-fs-save{ background:var(--mh-green) !important; border-color:var(--mh-green) !important; font-weight:700; }
+.mh-fs-controls button:hover{ background:rgba(255,255,255,.2); }
+.mh-fs-save{ background:linear-gradient(135deg, var(--mh-green), #1f9d76) !important; border-color:transparent !important; color:#062018 !important; font-weight:700; }
 .mh-fs-save:hover{ filter:brightness(1.08); }
 
-.mh-fs-body{ flex:1; overflow-y:auto; padding:28px 18px 60px; }
+.mh-fs-body{ flex:1; overflow-y:auto; padding:32px 18px 60px; }
 .quran-fs-page{
   max-width:700px; margin:0 auto;
   font-family:"Amiri Quran","Amiri",serif;
   font-size:1.9rem; line-height:2.6; text-align:justify; text-align-last:center;
-  color:var(--text-dark);
+  color:#F7F2E4;
 }
 .quran-fs-ayah{ display:inline; }
 .quran-fs-ayah-num{
@@ -150,93 +217,141 @@
   font-size:.55em; color:var(--gold); vertical-align:middle;
 }
 .mh-fs-nav{
-  position:sticky; bottom:0; background:var(--beige-light);
-  border-top:1px solid #e2e2e2;
+  position:sticky; bottom:0; background:rgba(6,14,30,.65);
+  -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border-top:1px solid var(--mh-border);
   display:flex; justify-content:center; gap:10px; padding:12px;
 }
 .mh-fs-nav button{
-  background:#fff; border:2px solid #e0e0e0; color:var(--primary-dark);
+  background:rgba(255,255,255,.08); border:1px solid var(--mh-border-2); color:#fff;
   padding:9px 18px; border-radius:20px; cursor:pointer;
 }
-.mh-fs-nav button:disabled{ opacity:.4; cursor:not-allowed; }
+.mh-fs-nav button:disabled{ opacity:.35; cursor:not-allowed; }
 
 /* ---------- الأذكار ---------- */
 .mh-athkar-cats{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
 .athkar-cat{
-  background:var(--white); border:2px solid #e0e0e0; padding:7px 16px; border-radius:20px;
-  cursor:pointer; font-size:.86rem; color:var(--primary-dark); font-family:inherit;
+  background:rgba(255,255,255,.07); border:1px solid var(--mh-border-2); padding:7px 16px; border-radius:20px;
+  cursor:pointer; font-size:.86rem; color:var(--mh-text); font-family:inherit;
+  -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
 }
-.athkar-cat.active{ background:var(--primary-blue); color:#fff; border-color:var(--primary-blue); }
-.mh-group-progress{ color:var(--text-muted); font-size:.88rem; margin-bottom:10px; }
+.athkar-cat.active{ background:var(--gold); color:#211803; border-color:var(--gold); font-weight:700; }
+.mh-group-progress{ color:var(--mh-text-dim); font-size:.88rem; margin-bottom:10px; }
+#athkar-list{
+  background:var(--mh-glass); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border); border-radius:var(--radius);
+  padding:6px; box-shadow:var(--mh-shadow);
+}
 .athkar-item{
-  background:var(--white); border:1px solid #eee; border-radius:var(--radius-sm);
-  padding:16px 18px; margin-bottom:10px; box-shadow:var(--shadow);
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-sm);
+  padding:16px 18px; margin:8px; box-shadow:none;
 }
 .athkar-item.completed{ border-color:var(--mh-green); background:var(--mh-green-soft); }
-.athkar-text{ font-family:"Amiri Quran","Amiri",serif; font-size:1.15rem; margin-bottom:10px; color:var(--text-dark); }
+.athkar-text{ font-family:"Amiri Quran","Amiri",serif; font-size:1.15rem; margin-bottom:10px; color:var(--mh-text); }
 .athkar-controls{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
 .counter-group{ display:flex; align-items:center; gap:8px; }
-.counter-btn{ width:32px; height:32px; border-radius:50%; border:1px solid #ddd; background:#fff; cursor:pointer; font-size:1rem; }
-.counter-value{ font-weight:700; color:var(--primary-dark); min-width:1.5em; text-align:center; display:inline-block; }
-.done-btn{ background:var(--primary-blue); color:#fff; border:none; padding:7px 16px; border-radius:20px; cursor:pointer; }
+.counter-btn{
+  width:32px; height:32px; border-radius:50%; border:1px solid var(--mh-border-2);
+  background:rgba(255,255,255,.08); color:var(--mh-text); cursor:pointer; font-size:1rem;
+}
+.counter-btn:hover{ background:rgba(255,255,255,.16); }
+.counter-value{ font-weight:700; color:var(--mh-text); min-width:1.5em; text-align:center; display:inline-block; }
 
 /* ---------- الورد اليومي ---------- */
-.mh-progress-track{ height:10px; background:#eee; border-radius:8px; overflow:hidden; margin-bottom:8px; }
-.mh-progress-fill{ height:100%; background:var(--mh-green); border-radius:8px; transition:width .3s ease; }
-.mh-tasks-list{ list-style:none; padding:0; margin:14px 0 0; }
-.task-item{
-  display:flex; align-items:center; gap:12px; background:var(--white); border:1px solid #eee;
-  border-radius:var(--radius-sm); padding:14px 18px; margin-bottom:10px; cursor:pointer;
-  box-shadow:var(--shadow); transition:var(--transition);
+.mh-progress-track{ height:10px; background:rgba(255,255,255,.1); border-radius:8px; overflow:hidden; margin-bottom:8px; }
+.mh-progress-fill{ height:100%; background:linear-gradient(90deg, var(--mh-green), #1f9d76); border-radius:8px; transition:width .3s ease; }
+.mh-tasks-list{
+  list-style:none; padding:6px; margin:14px 0 0;
+  background:var(--mh-glass); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border); border-radius:var(--radius); box-shadow:var(--mh-shadow);
 }
+.task-item{
+  display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius-sm); padding:14px 18px; margin:8px; cursor:pointer;
+  box-shadow:none; transition:background .2s ease;
+}
+.task-item:hover{ background:rgba(255,255,255,.07); }
 .task-item.completed{ background:var(--mh-green-soft); border-color:var(--mh-green); cursor:default; }
 .task-check{
-  width:26px; height:26px; border-radius:50%; border:2px solid #ddd;
+  width:26px; height:26px; border-radius:50%; border:2px solid var(--mh-border-2);
   display:flex; align-items:center; justify-content:center; color:var(--mh-green); font-weight:800; flex-shrink:0;
 }
-.task-title{ font-weight:700; color:var(--primary-dark); }
-.task-points{ color:var(--text-muted); font-size:.82rem; }
+.task-info{ flex:1; }
+.task-title{ font-weight:700; color:var(--mh-text); }
+.task-points{ color:var(--mh-text-dim); font-size:.82rem; }
 
 /* ---------- مواقيت الصلاة ---------- */
 .mh-next-prayer{ text-align:center; margin-bottom:16px; }
-.mh-next-prayer #countdown{ font-size:1.7rem; font-weight:800; color:var(--primary-dark); }
-.mh-prayer-times{ background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; margin-bottom:20px; }
-.prayer-row{ display:flex; justify-content:space-between; padding:13px 18px; border-bottom:1px solid #eee; }
+.mh-next-prayer #countdown{ font-size:1.7rem; font-weight:800; color:var(--mh-text); text-shadow:0 2px 12px rgba(0,0,0,.4); }
+.mh-next-prayer #next-prayer-name{ color:var(--gold); }
+.mh-prayer-times{
+  background:var(--mh-glass); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border); border-radius:var(--radius); box-shadow:var(--mh-shadow);
+  overflow:hidden; margin-bottom:20px;
+}
+.prayer-row{ display:flex; justify-content:space-between; padding:13px 18px; border-bottom:1px solid rgba(255,255,255,.08); color:var(--mh-text); }
 .prayer-row:last-child{ border-bottom:none; }
-.prayer-row.next{ background:var(--beige-soft); font-weight:700; color:var(--primary-dark); }
-.mh-settings-card{ background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; }
+.prayer-row.next{ background:rgba(201,162,39,.14); font-weight:700; color:var(--gold); }
+.prayer-time{ color:var(--mh-text-dim); }
+.prayer-row.next .prayer-time{ color:var(--gold); }
+.mh-settings-card{
+  background:var(--mh-glass); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border); border-radius:var(--radius); box-shadow:var(--mh-shadow); padding:22px;
+}
+.mh-settings-card .form-group label{ color:var(--mh-text-dim); }
+.mh-settings-card .form-group input,
+.mh-settings-card .form-group select{
+  background:rgba(255,255,255,.06); border:1px solid var(--mh-border-2); color:var(--mh-text);
+}
+.mh-settings-card .form-group input:focus,
+.mh-settings-card .form-group select:focus{ border-color:var(--gold); background:rgba(255,255,255,.1); }
 .mh-check-row{ display:flex; align-items:center; gap:8px; margin-top:12px; }
-.mh-check-row label{ margin:0; font-weight:600; color:var(--text-dark); }
+.mh-check-row label{ margin:0; font-weight:600; color:var(--mh-text); }
 
 /* ---------- التقدم ---------- */
 .mh-stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; }
-.mh-stat-box{ background:var(--white); border-radius:var(--radius-sm); box-shadow:var(--shadow); padding:18px; text-align:center; }
-.mh-stat-value{ font-size:1.35rem; font-weight:800; color:var(--primary-dark); display:block; }
-.mh-stat-label{ color:var(--text-muted); font-size:.82rem; }
+.mh-stat-box{
+  background:var(--mh-glass); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border); border-radius:var(--radius-sm); box-shadow:var(--mh-shadow);
+  padding:18px; text-align:center;
+}
+.mh-stat-value{ font-size:1.35rem; font-weight:800; color:var(--gold); display:block; }
+.mh-stat-label{ color:var(--mh-text-dim); font-size:.82rem; }
 
 /* ---------- الإنجازات ---------- */
 .mh-achievements-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; }
-.achievement-card{ background:var(--white); border-radius:var(--radius-sm); box-shadow:var(--shadow); padding:20px; text-align:center; opacity:.45; }
-.achievement-card.unlocked{ opacity:1; border:1px solid var(--gold); background:#FFF9EE; }
+.achievement-card{
+  background:var(--mh-glass); -webkit-backdrop-filter:var(--mh-blur); backdrop-filter:var(--mh-blur);
+  border:1px solid var(--mh-border); border-radius:var(--radius-sm); box-shadow:var(--mh-shadow);
+  padding:20px; text-align:center; opacity:.4;
+}
+.achievement-card.unlocked{ opacity:1; border-color:var(--gold); background:rgba(201,162,39,.14); }
 .ach-icon{ font-size:1.8rem; display:block; margin-bottom:6px; }
-.ach-title{ font-weight:700; color:var(--primary-dark); font-size:.92rem; }
-.ach-desc{ color:var(--text-muted); font-size:.78rem; }
+.ach-title{ font-weight:700; color:var(--mh-text); font-size:.92rem; }
+.ach-desc{ color:var(--mh-text-dim); font-size:.78rem; }
 
 /* ---------- شاشة الأذان ---------- */
 .mh-adhan-fs{
-  position:fixed; inset:0; background:var(--primary-dark); color:#fff; z-index:2300;
+  position:fixed; inset:0; z-index:2300; color:#fff;
+  background:linear-gradient(160deg, #0a1730, #182a4a 60%, #3d5878);
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;
 }
 .adhan-fs-line{ opacity:.3; font-size:1.3rem; margin:6px 0; transition:opacity .4s ease; }
 .adhan-fs-line.active{ opacity:1; color:var(--gold); }
 .mh-adhan-close{
-  margin-top:20px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4);
+  margin-top:20px; background:rgba(255,255,255,.12); border:1px solid var(--mh-border-2);
   color:#fff; padding:9px 22px; border-radius:20px; cursor:pointer; font-family:inherit; font-size:.95rem;
 }
-.mh-adhan-close:hover{ background:rgba(255,255,255,.28); }
+.mh-adhan-close:hover{ background:rgba(255,255,255,.22); }
 
 @media (max-width:560px){
   #ayah-text{ font-size:1.35rem; }
   .quran-fs-page{ font-size:1.5rem; line-height:2.3; }
   .mh-choice-actions{ flex-direction:column; }
+}
+
+/* الأداء على الجوال: إلغاء الزجاج الضبابي (backdrop-filter) عن العناصر الكثيرة العدد،
+   نفس منطق الموقع الأصلي، مع الإبقاء على الشفافية والحدود لنفس الإحساس البصري */
+@media (max-width:768px){
+  .surah-item, .task-item, .athkar-item{ -webkit-backdrop-filter:none; backdrop-filter:none; }
 }
