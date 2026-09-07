@@ -33,7 +33,8 @@ async function renderGroupLectures(groupId, contentBox, g) {
 // ترتيب: 3 في كل صف (بدون ثعبان معقد - أوضح للمستخدم)
 // ملاحظة: الأقسام الـ13 القديمة محذوفة. أضف أرقام الأقسام الجديدة هنا عند إنشائها في sectionsData.
 function getSectionsOrder() {
-    return [];
+    // القسم 15 = تنمية المهارات (يظهر في شبكة الأقسام)
+    return [15];
 }
 
 // ========== كاش إعدادات الأقسام (مجاني/نشط/رابط خارجي/كود دخول) — Firestore: sectionSettings ==========
@@ -221,6 +222,13 @@ function openSectionPage(section, hasAccess) {
         openSubscriptionModal(section);
         return;
     }
+
+    // قسم تنمية المهارات → مجلد skills-module
+    if (section.id === 15) {
+        window.location.href = 'skills-module/skills.html';
+        return;
+    }
+
     window.location.href = 'section-' + section.id + '.html';
 }
 
