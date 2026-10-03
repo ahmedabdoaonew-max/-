@@ -36,7 +36,16 @@ service cloud.firestore {
       // الإنشاء مسموح للمستخدم لنفسه فقط عند التسجيل، وبشرط إن role يكون
       // 'student' دايماً — يعني محدش يقدر يمنح نفسه صلاحية أدمن وقت التسجيل.
       allow create: if isSignedIn() && request.auth.uid == uid
-                    && request.resource.data.role == 'student';
+                    && request.resource.data.role == 'student'
+                    && request.resource.data.keys().hasOnly([
+                         'name','email','phone','role','allowedSections','allowedSubSections',
+                         'subscriptionType','paymentStatus','blocked','referralCode',
+                         'rewardCredits','createdAt'])
+                    && request.resource.data.blocked == false
+                    && request.resource.data.subscriptionType == 'free'
+                    && request.resource.data.paymentStatus == 'unpaid'
+                    && request.resource.data.allowedSections.size() == 0
+                    && request.resource.data.rewardCredits == 0;
       allow delete: if isSuperAdmin();
     }
 
