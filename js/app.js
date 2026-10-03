@@ -244,6 +244,66 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ========== دوال مشتركة (Firebase) كانت ناقصة ==========
+
+// المستخدمون من Firestore → كائن { uid: profile } (للأدمن فقط حسب القواعد)
+async function getUsersAsync() {
+    const snap = await db.collection('users').get();
+    const out = {};
+    snap.forEach(function (d) {
+        out[d.id] = (typeof _profileFromDoc === 'function')
+            ? _profileFromDoc(d.id, d.data())
+            : Object.assign({ id: d.id }, d.data());
+    });
+    return out;
+}
+
+// تحديث مستخدم (الأدمن فقط حسب firestore.rules)
+async function updateUserDoc(uid, fields) {
+    await db.collection('users').doc(uid).update(fields);
+}
+
+// المحاضرات من Firestore → كائن { id: lecture } (البيانات العامة فقط، بدون رابط الفيديو)
+async function getLecturesAsync() {
+    const snap = await db.collection('lectures').get();
+    const out = {};
+    snap.forEach(function (d) {
+        out[d.id] = Object.assign({ id: d.id }, d.data());
+    });
+    return out;
+}
+
+// تحديث الهيدر: يخفي أزرار الدخول ويظهر قائمة المستخدم
+function updateHeaderAuth() {
+    var user = getCurrentUser();
+    document.querySelectorAll('#authButtons').forEach(function (el) {
+        el.style.display = user ? 'none' : 'flex';
+    });
+    document.querySelectorAll('#userMenu').forEach(function (el) {
+        el.style.display = user ? 'flex' : 'none';
+    });
+    document.querySelectorAll('#headerQuickLogin').forEach(function (el) {
+        el.style.display = user ? 'none' : '';
+    });
+    document.querySelectorAll('.user-name').forEach(function (el) {
+        el.textContent = user ? ((user.name || '').split(' ')[0] || 'حسابي') : '';
+    });
+    document.querySelectorAll('#adminNavLink').forEach(function (el) {
+        el.style.display = (user && user.isAdmin) ? 'inline-flex' : 'none';
+    });
+}
+
+// الخروج
+async function logout() {
+    try { await auth.signOut(); } catch (e) { console.error(e); }
+    localStorage.removeItem('currentUser');
+    window.location.href = 'index.html';
+}
+
+// حدّث الهيدر فور تحميل الصفحة (من الكاش) وعند تأكد Firebase من حالة الدخول
+document.addEventListener('DOMContentLoaded', updateHeaderAuth);
+document.addEventListener('authReady', updateHeaderAuth);
+
 // ========== بيانات الأقسام (الأقسام القديمة الـ13 محذوفة) ==========
 const sectionsData = [
     // ملاحظة: الأقسام الـ13 القديمة تم حذفها بالكامل — يمكن إضافة أقسام جديدة هنا لاحقاً
