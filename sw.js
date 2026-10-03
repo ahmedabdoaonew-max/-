@@ -3,7 +3,7 @@
    يفعّل خاصية "تثبيت التطبيق" من جوجل كروم + تخزين مؤقت بسيط للعمل شبه دون اتصال
    ============================================ */
 
-const CACHE_NAME = 'international-academy-v2';
+const CACHE_NAME = 'international-academy-v3';
 const APP_SHELL = [
     '/',
     '/index.html',
