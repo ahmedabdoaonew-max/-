@@ -13,6 +13,38 @@ if ('serviceWorker' in navigator) {
 }
 
 
+// ========== تسجيل الدخول إجباري قبل فتح أي صفحة ==========
+// الصفحات المفتوحة بدون دخول (أضف أي صفحة تريدها عامة هنا، مثلاً 'verify' للتحقق من الشهادات)
+(function () {
+    var PUBLIC_PAGES = ['login', 'register'];
+    var page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '') || 'index';
+    if (PUBLIC_PAGES.indexOf(page) !== -1) return;
+    if (typeof auth === 'undefined') return;
+
+    // أخفي الصفحة فوراً لحد ما نتأكد إن المستخدم مسجّل دخول
+    if (!document.getElementById('authGateStyle')) {
+        var hideStyle = document.createElement('style');
+        hideStyle.id = 'authGateStyle';
+        hideStyle.textContent = 'html{visibility:hidden !important}';
+        document.head.appendChild(hideStyle);
+    }
+
+    function goLogin() { location.replace('login.html'); }
+    // أمان: لو Firebase ماردّش خلال 8 ثواني، حوّل لصفحة الدخول
+    var failSafe = setTimeout(goLogin, 8000);
+
+    var unsub = auth.onAuthStateChanged(function (fbUser) {
+        unsub();
+        clearTimeout(failSafe);
+        if (!fbUser) {
+            localStorage.removeItem('currentUser');
+            return goLogin();
+        }
+        var st = document.getElementById('authGateStyle');
+        if (st) st.remove();
+    });
+})();
+
 // ========== تنبيهات عامة (تُستخدم في كل الصفحات) ==========
 function showToast(message, type) {
     let el = document.getElementById('globalToast');
