@@ -31,7 +31,7 @@ function _profileFromDoc(uid, data) {
         paymentStatus: data.paymentStatus || 'unpaid',
         blocked: !!data.blocked,
         role: data.role || 'student',
-        isAdmin: data.role === 'super_admin' || data.role === 'admin' || !!data.isAdmin,
+        isAdmin: data.role === 'super_admin' || data.role === 'admin',
         referralCode: data.referralCode || '',
         rewardCredits: data.rewardCredits || 0,
         createdAt: data.createdAt || ''
@@ -160,7 +160,14 @@ async function handleRegister(event) {
             rewardCredits: 0,
             createdAt: new Date().toISOString()
         };
-        await db.collection('users').doc(cred.user.uid).set(newUserData);
+        // لو Cloud Function (onUserCreate) سبقت وأنشأت المستند، الإنشاء المباشر هيتحول
+        // لتحديث وقواعد الأمان هترفضه — فنكتفي بتحديث الاسم والهاتف (المسموح بيهم).
+        const userRef = db.collection('users').doc(cred.user.uid);
+        try {
+            await userRef.set(newUserData);
+        } catch (e) {
+            await userRef.update({ name, phone: phone || '' });
+        }
 
         const profile = _profileFromDoc(cred.user.uid, newUserData);
         _cacheUser(profile);
@@ -234,7 +241,7 @@ async function requireAdmin() {
                 }
 
                 const data = doc.data();
-                const isAdmin = data.role === 'super_admin' || data.role === 'admin' || data.isAdmin === true;
+                const isAdmin = data.role === 'super_admin' || data.role === 'admin';
 
                 if (!isAdmin) {
                     showToast('غير مصرح لك بالدخول', 'error');

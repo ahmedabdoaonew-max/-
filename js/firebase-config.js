@@ -19,4 +19,4 @@ const db = firebase.firestore();
 
 // عنوان Cloud Functions (يُستخدم لطلبات الدفع)
 // بعد نشر functions هيبقى شكله: https://us-central1-PROJECT_ID.cloudfunctions.net
-const FUNCTIONS_BASE_URL = "https://us-central1-ضع_PROJECT_ID.cloudfunctions.net";
+const FUNCTIONS_BASE_URL = "https://us-central1-international-academy-d0e86.cloudfunctions.net";
