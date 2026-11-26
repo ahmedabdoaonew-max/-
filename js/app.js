@@ -13,16 +13,21 @@ if ('serviceWorker' in navigator) {
 }
 
 
-// ========== تسجيل الدخول إجباري قبل فتح أي صفحة ==========
-// الصفحات المفتوحة بدون دخول (أضف أي صفحة تريدها عامة هنا، مثلاً 'verify' للتحقق من الشهادات)
+// ========== التصفح مفتوح للجميع — تسجيل الدخول مطلوب فقط للصفحات الشخصية/الإدارية ==========
+// أضف هنا أي صفحة تريدها محمية بتسجيل الدخول
 (function () {
-    var PUBLIC_PAGES = ['login', 'register'];
+    var PROTECTED_PAGES = ['admin', 'profile', 'checkout', 'certificates'];
     var page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '') || 'index';
-    if (PUBLIC_PAGES.indexOf(page) !== -1) return;
+    var st = document.getElementById('authGateStyle');
+    if (PROTECTED_PAGES.indexOf(page) === -1) {
+        // صفحة عامة: لا تخفِها ولا تحوّل لتسجيل الدخول
+        if (st) st.remove();
+        return;
+    }
     if (typeof auth === 'undefined') return;
 
     // أخفي الصفحة فوراً لحد ما نتأكد إن المستخدم مسجّل دخول
-    if (!document.getElementById('authGateStyle')) {
+    if (!st) {
         var hideStyle = document.createElement('style');
         hideStyle.id = 'authGateStyle';
         hideStyle.textContent = 'html{visibility:hidden !important}';
@@ -40,8 +45,8 @@ if ('serviceWorker' in navigator) {
             localStorage.removeItem('currentUser');
             return goLogin();
         }
-        var st = document.getElementById('authGateStyle');
-        if (st) st.remove();
+        var st2 = document.getElementById('authGateStyle');
+        if (st2) st2.remove();
     });
 })();
 
